@@ -8,12 +8,20 @@ use Illuminate\View\View;
 class DashboardController extends Controller
 {
     /**
-     * Display the teacher dashboard.
+     * Display the teacher dashboard with gradebooks overview.
      */
     public function index(): View
     {
-        return view('dashboard', [
-            'user' => Auth::user(),
-        ]);
+        $user = Auth::user();
+
+        $recentGradebooks = $user->gradebooks()
+            ->with(['classroom', 'subject', 'academicYear'])
+            ->latest()
+            ->take(6)
+            ->get();
+
+        $totalGradebooks = $user->gradebooks()->count();
+
+        return view('dashboard', compact('user', 'recentGradebooks', 'totalGradebooks'));
     }
 }
