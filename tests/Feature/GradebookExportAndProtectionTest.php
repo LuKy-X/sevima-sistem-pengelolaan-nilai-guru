@@ -69,26 +69,49 @@ class GradebookExportAndProtectionTest extends TestCase
         Score::create(['assessment_column_id' => $col1->id, 'student_id' => $studentB->id, 'score' => 75]);
         Score::create(['assessment_column_id' => $col2->id, 'student_id' => $studentB->id, 'score' => 80]);
 
-        $response = $this->actingAs($teacher)->get(route('gradebooks.export', $gradebook));
+        // 1a. Test Default Export (Microsoft Excel .xlsx)
+        $excelResponse = $this->actingAs($teacher)->get(route('gradebooks.export', $gradebook));
+        $excelResponse->assertStatus(200);
+        $excelResponse->assertHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        $this->assertStringContainsString('attachment; filename="rekap-nilai-', $excelResponse->headers->get('Content-Disposition'));
+        $this->assertStringEndsWith('.xlsx"', $excelResponse->headers->get('Content-Disposition'));
+        $excelContent = $excelResponse->streamedContent();
+        $this->assertNotEmpty($excelContent);
+        // Valid XLSX file starts with ZIP signature PK (0x50, 0x4B)
+        $this->assertStringStartsWith('PK', $excelContent);
+
+        // 1b. Test CSV Export (format=csv)
+        $response = $this->actingAs($teacher)->get(route('gradebooks.export', [$gradebook, 'format' => 'csv']));
 
         $response->assertStatus(200);
         $response->assertHeader('Content-Type', 'text/csv; charset=UTF-8');
-        $this->assertStringContainsString('attachment; filename="buku-nilai-', $response->headers->get('Content-Disposition'));
+        $this->assertStringContainsString('attachment; filename="rekap-nilai-', $response->headers->get('Content-Disposition'));
+        $this->assertStringEndsWith('.csv"', $response->headers->get('Content-Disposition'));
 
         $content = $response->streamedContent();
 
-        $this->assertStringContainsString('BUKU NILAI HASIL BELAJAR SISWA', $content);
+        $this->assertStringContainsString('REKAP NILAI SISWA', $content);
+        $this->assertStringContainsString('Kelas/ Semester', $content);
+        $this->assertStringContainsString('Tahun Ajaran', $content);
         $this->assertStringContainsString('Mata Pelajaran', $content);
-        $this->assertStringContainsString('XII RPL 1', $content);
+        $this->assertStringContainsString('XII RPL 1 / I', $content);
         $this->assertStringContainsString('Dra. Siti Aminah, M.Pd.', $content);
         $this->assertStringContainsString('198501152010012005', $content);
         $this->assertStringContainsString('Ulangan Harian 1', $content);
         $this->assertStringContainsString('Proyek Web Portofolio [Rubrik]', $content);
         $this->assertStringContainsString('Ahmad Faiz', $content);
         $this->assertStringContainsString('Bintang Pratama', $content);
+        $this->assertStringContainsString('Nilai Rata-rata', $content);
         $this->assertStringContainsString('Rata-rata Kelas', $content);
         $this->assertStringContainsString('Mengetahui,', $content);
         $this->assertStringContainsString('Guru Mata Pelajaran', $content);
+        $this->assertStringNotContainsString('NISN', $content);
+
+        // Also test export with semicolon delimiter for Indonesian Excel compatibility
+        $semicolonResponse = $this->actingAs($teacher)->get(route('gradebooks.export', [$gradebook, 'format' => 'csv', 'delimiter' => ';']));
+        $semicolonResponse->assertStatus(200);
+        $semicolonContent = $semicolonResponse->streamedContent();
+        $this->assertStringContainsString('No;Nama;', $semicolonContent);
     }
 
     /**

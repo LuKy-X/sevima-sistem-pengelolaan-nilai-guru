@@ -46,17 +46,27 @@
                 <span>Kembali ke Buku Nilai</span>
             </a>
 
-            <!-- Ekspor Buku Nilai -->
-            <a 
-                href="{{ route('gradebooks.export', $gradebook) }}" 
-                class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-emerald-200 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold text-xs shadow-xs transition-all cursor-pointer shrink-0"
-                title="Ekspor Buku Nilai ke format Excel / Spreadsheet (CSV)"
-            >
-                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                </svg>
-                <span>Ekspor Buku Nilai</span>
-            </a>
+            <!-- Ekspor Buku Nilai (Excel & CSV) -->
+            <div class="relative inline-flex items-center rounded-xl shadow-xs border border-emerald-200 bg-emerald-50 shrink-0">
+                <a 
+                    href="{{ route('gradebooks.export', $gradebook) }}" 
+                    class="inline-flex items-center gap-2 px-3.5 py-2.5 hover:bg-emerald-100 text-emerald-800 font-bold text-xs rounded-l-xl transition-all cursor-pointer"
+                    title="Ekspor Rekap Nilai ke Microsoft Excel (.xlsx)"
+                >
+                    <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    <span>Ekspor Buku Nilai (Excel)</span>
+                </a>
+                <span class="w-[1px] h-5 bg-emerald-300"></span>
+                <a 
+                    href="{{ route('gradebooks.export', [$gradebook, 'format' => 'csv']) }}" 
+                    class="inline-flex items-center px-2.5 py-2.5 hover:bg-emerald-100 text-emerald-700 font-bold text-[11px] rounded-r-xl transition-all cursor-pointer"
+                    title="Unduh Format CSV"
+                >
+                    <span>CSV</span>
+                </a>
+            </div>
 
             <a 
                 href="{{ route('gradebooks.columns.create', $gradebook) }}" 
