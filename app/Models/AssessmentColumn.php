@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 #[Fillable(['gradebook_id', 'name', 'type', 'weight', 'max_score', 'order'])]
 class AssessmentColumn extends Model
@@ -47,5 +48,15 @@ class AssessmentColumn extends Model
     public function scores(): HasMany
     {
         return $this->hasMany(Score::class);
+    }
+
+    /**
+     * Get the rubric attached to this assessment column, if any.
+     *
+     * @return HasOne<Rubric, $this>
+     */
+    public function rubric(): HasOne
+    {
+        return $this->hasOne(Rubric::class);
     }
 }

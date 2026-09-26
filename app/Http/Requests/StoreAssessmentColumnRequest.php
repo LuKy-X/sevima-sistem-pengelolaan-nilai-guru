@@ -52,4 +52,29 @@ class StoreAssessmentColumnRequest extends FormRequest
             'max_score.min' => 'Skor maksimal minimal bernilai 1.',
         ];
     }
+
+    /**
+     * Configure the validator instance.
+     */
+    public function withValidator($validator): void
+    {
+        $validator->after(function ($validator) {
+            /** @var Gradebook|null $gradebook */
+            $gradebook = $this->route('gradebook');
+            if (! $gradebook) {
+                return;
+            }
+
+            $existingWeight = (float) $gradebook->assessmentColumns()->sum('weight');
+            $newWeight = (float) $this->input('weight');
+
+            if ($existingWeight + $newWeight > 100) {
+                $available = max(0, 100 - $existingWeight);
+                $validator->errors()->add(
+                    'weight',
+                    "Total bobot kolom penilaian tidak boleh melebihi 100%. Sisa bobot yang tersedia adalah {$available}%."
+                );
+            }
+        });
+    }
 }

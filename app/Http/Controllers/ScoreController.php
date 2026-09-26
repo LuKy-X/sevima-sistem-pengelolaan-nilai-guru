@@ -21,6 +21,12 @@ class ScoreController extends Controller
 
         $normalized = $request->normalizedScores();
 
+        $gradebook->loadMissing('assessmentColumns.rubric');
+        $rubricColumnIds = $gradebook->assessmentColumns
+            ->filter(fn ($col) => $col->rubric !== null)
+            ->pluck('id')
+            ->all();
+
         $toUpsert = [];
         $toDelete = [];
 
@@ -28,6 +34,11 @@ class ScoreController extends Controller
             $columnId = (int) $item['assessment_column_id'];
             $studentId = (int) $item['student_id'];
             $scoreVal = $item['score'];
+
+            // Assessment columns managed by a rubric cannot be overwritten directly via the gradebook score matrix
+            if (in_array($columnId, $rubricColumnIds, true)) {
+                continue;
+            }
 
             if ($scoreVal === null || $scoreVal === '') {
                 $toDelete[] = [

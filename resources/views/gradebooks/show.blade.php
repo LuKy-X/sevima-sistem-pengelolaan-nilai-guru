@@ -34,9 +34,33 @@
 
         <!-- Gradebook Quick Actions -->
         <div class="flex flex-wrap items-center gap-2.5 shrink-0">
+            <!-- Kembali ke Daftar Buku Nilai -->
+            <a 
+                href="{{ route('gradebooks.index') }}" 
+                class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs shadow-xs transition-colors shrink-0"
+                title="Kembali ke Daftar Buku Nilai"
+            >
+                <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                <span>Kembali ke Buku Nilai</span>
+            </a>
+
+            <!-- Ekspor Buku Nilai -->
+            <a 
+                href="{{ route('gradebooks.export', $gradebook) }}" 
+                class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-emerald-200 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold text-xs shadow-xs transition-all cursor-pointer shrink-0"
+                title="Ekspor Buku Nilai ke format Excel / Spreadsheet (CSV)"
+            >
+                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                <span>Ekspor Buku Nilai</span>
+            </a>
+
             <a 
                 href="{{ route('gradebooks.columns.create', $gradebook) }}" 
-                class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-blue-200 bg-blue-50/70 hover:bg-blue-100 text-[#1363DF] font-bold text-xs shadow-xs transition-all cursor-pointer"
+                class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-blue-200 bg-blue-50/70 hover:bg-blue-100 text-[#1363DF] font-bold text-xs shadow-xs transition-all cursor-pointer shrink-0"
             >
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
@@ -47,7 +71,7 @@
             <button 
                 type="submit" 
                 form="score-matrix-form" 
-                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1363DF] hover:bg-blue-700 text-white font-extrabold text-xs shadow-md shadow-blue-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#1363DF] hover:bg-blue-700 text-white font-extrabold text-xs shadow-md shadow-blue-500/25 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer shrink-0"
             >
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"></path>
@@ -90,7 +114,7 @@
 
     <!-- Metadata Indicators Bar -->
     <div class="flex flex-wrap items-center justify-between gap-3 px-2">
-        <div class="flex items-center gap-3 text-xs text-slate-500">
+        <div class="flex flex-wrap items-center gap-3 text-xs text-slate-500">
             <span class="inline-flex items-center gap-1.5 font-bold text-slate-700">
                 <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                 Total {{ $students->count() }} Siswa Terdaftar
@@ -99,17 +123,22 @@
             <span class="font-bold text-slate-700">
                 {{ $gradebook->assessmentColumns->count() }} Kolom Penilaian
             </span>
-            @php
-                $totalWeight = $gradebook->assessmentColumns->sum('weight');
-            @endphp
             <span>•</span>
-            <span class="font-semibold {{ $totalWeight == 100 ? 'text-emerald-700' : 'text-amber-700' }}">
-                Total Bobot: {{ number_format($totalWeight, 0) }}% / 100%
+            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold {{ $totalConfiguredWeight == 100 ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : ($totalConfiguredWeight > 100 ? 'bg-rose-50 text-rose-700 border border-rose-200' : 'bg-amber-50 text-amber-700 border border-amber-200') }}">
+                <span class="w-1.5 h-1.5 rounded-full {{ $totalConfiguredWeight == 100 ? 'bg-emerald-500' : ($totalConfiguredWeight > 100 ? 'bg-rose-500' : 'bg-amber-500') }}"></span>
+                Total Bobot: {{ number_format($totalConfiguredWeight, 0) }}% / 100%
+                @if ($totalConfiguredWeight == 100)
+                    (Optimal)
+                @elseif ($totalConfiguredWeight < 100)
+                    (Belum 100%)
+                @else
+                    (Melebihi 100%)
+                @endif
             </span>
         </div>
 
         <div class="text-xs text-slate-400 hidden md:block">
-            Petunjuk: Tekan <kbd class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-600 font-mono font-bold">Tab</kbd> atau <kbd class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-600 font-mono font-bold">Enter</kbd> untuk berpindah sel. Simpan cepat dengan <kbd class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-600 font-mono font-bold">Ctrl + S</kbd>.
+            Petunjuk: Nilai akhir dihitung berbobot secara dinamis. Tekan <kbd class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-600 font-mono font-bold">Tab</kbd> untuk berpindah sel. Simpan cepat dengan <kbd class="px-1.5 py-0.5 rounded bg-slate-100 border border-slate-200 text-slate-600 font-mono font-bold">Ctrl + S</kbd>.
         </div>
     </div>
 
@@ -133,6 +162,79 @@
             </a>
         </div>
     @endif
+
+    <!-- Selected Column Context Action Bar (Appears when an assessment column is clicked) -->
+    <div id="column-action-bar" class="hidden mb-4 p-3.5 bg-gradient-to-r from-blue-50 via-indigo-50/50 to-white rounded-2xl border border-blue-200 shadow-sm flex flex-wrap items-center justify-between gap-3 animate-in fade-in duration-150">
+        <div class="flex items-center gap-3">
+            <span class="p-2.5 rounded-xl bg-[#1363DF] text-white shadow-xs">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"></path>
+                </svg>
+            </span>
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Kolom Dipilih:</span>
+                    <span id="action-bar-column-name" class="font-extrabold text-slate-900 text-sm">-</span>
+                    <span id="action-bar-column-meta" class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[10px] font-mono font-bold">-</span>
+                </div>
+                <p class="text-[11px] text-slate-500 mt-0.5">Pilih tindakan untuk kolom penilaian yang sedang aktif.</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+            <!-- Edit Kolom -->
+            <a 
+                id="action-bar-edit-btn" 
+                href="#" 
+                class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-bold text-xs border border-slate-200 shadow-2xs transition-colors"
+                title="Edit kolom penilaian"
+            >
+                <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                </svg>
+                <span>Edit Kolom</span>
+            </a>
+
+            <!-- Kelola Rubrik -->
+            <a 
+                id="action-bar-rubric-btn" 
+                href="#" 
+                class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#1363DF] hover:bg-blue-700 text-white font-extrabold text-xs shadow-xs shadow-blue-500/20 transition-colors"
+                title="Kelola rubrik penilaian untuk kolom ini"
+            >
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                </svg>
+                <span>Kelola Rubrik</span>
+            </a>
+
+            <!-- Hapus Kolom -->
+            <button 
+                id="action-bar-delete-btn" 
+                type="button" 
+                onclick="triggerDeleteSelectedColumn()" 
+                class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200/80 font-bold text-xs transition-colors cursor-pointer"
+                title="Hapus kolom penilaian"
+            >
+                <svg class="w-3.5 h-3.5 text-rose-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                </svg>
+                <span>Hapus Kolom</span>
+            </button>
+
+            <!-- Deselect -->
+            <button 
+                type="button" 
+                onclick="deselectAssessmentColumn()" 
+                class="p-2 rounded-xl text-slate-400 hover:text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
+                title="Tutup aksi kolom"
+            >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
 
     <!-- SPREADSHEET SCORE MATRIX (Primary Component) -->
     <form id="score-matrix-form" action="{{ route('gradebooks.scores.store', $gradebook) }}" method="POST">
@@ -160,55 +262,63 @@
                                     <span class="text-[10px] text-blue-100 block mt-0.5 font-mono">Belum ada kolom</span>
                                 </th>
                             @else
-                                <!-- Dynamic Assessment Columns -->
+                                <!-- Dynamic Assessment Columns (Click column to select and view action bar) -->
                                 @foreach ($gradebook->assessmentColumns as $column)
-                                    <th scope="col" class="min-w-[125px] px-3 py-3 text-center border-r border-blue-400/30">
-                                        <div class="flex flex-col items-center justify-between h-full gap-1">
-                                            <!-- Column Name -->
-                                            <span class="font-extrabold text-white text-xs sm:text-sm whitespace-nowrap" title="{{ $column->name }}">
-                                                {{ $column->name }}
-                                            </span>
+                                    <th 
+                                        scope="col" 
+                                        class="assessment-col-header min-w-[130px] px-3 py-3 text-center border-r border-blue-400/30 cursor-pointer select-none transition-all hover:bg-blue-600/70"
+                                        data-column-id="{{ $column->id }}"
+                                        data-column-name="{{ $column->name }}"
+                                        data-column-type="{{ $column->type }}"
+                                        data-column-weight="{{ number_format($column->weight, 0) }}"
+                                        data-column-max="{{ number_format($column->max_score, 0) }}"
+                                        data-has-rubric="{{ $column->rubric !== null ? '1' : '0' }}"
+                                        data-edit-url="{{ route('gradebooks.columns.edit', [$gradebook, $column]) }}"
+                                        data-rubric-url="{{ route('gradebooks.columns.rubric.show', [$gradebook, $column]) }}"
+                                        data-delete-url="{{ route('gradebooks.columns.destroy', [$gradebook, $column]) }}"
+                                        onclick="selectAssessmentColumn(this)"
+                                        title="Klik kolom untuk melihat opsi Edit, Rubrik, dan Hapus"
+                                    >
+                                        <div class="flex flex-col items-center justify-between h-full gap-1.5">
+                                            <!-- Column Name & Active Selection Indicator -->
+                                            <div class="flex items-center justify-center gap-1.5">
+                                                <span class="font-extrabold text-white text-xs sm:text-sm whitespace-nowrap" title="{{ $column->name }}">
+                                                    {{ $column->name }}
+                                                </span>
+                                                <span class="selected-col-indicator hidden w-2 h-2 rounded-full bg-amber-300 ring-2 ring-amber-400/80 shrink-0"></span>
+                                            </div>
 
-                                            <!-- Metadata Badge: Type, Weight, Max Score -->
+                                            <!-- Metadata Badge: Type, Rubric Badge, Weight, Max Score -->
                                             <div class="flex flex-wrap items-center justify-center gap-1 text-[11px] text-blue-100 font-mono">
                                                 <span class="px-1.5 py-0.5 rounded bg-white/20 uppercase font-semibold text-[10px]">
                                                     {{ $column->type }}
                                                 </span>
+                                                @if ($column->rubric !== null)
+                                                    <span class="px-1.5 py-0.5 rounded bg-amber-400 text-slate-900 font-extrabold text-[9px] uppercase tracking-wider" title="Penilaian dikelola menggunakan Rubrik">
+                                                        Rubrik
+                                                    </span>
+                                                @endif
                                                 <span class="font-bold">{{ number_format($column->weight, 0) }}%</span>
                                                 <span>•</span>
                                                 <span>{{ number_format($column->max_score, 0) }}</span>
                                             </div>
+                                        </div>
 
-                                            <!-- Header Column Quick Actions (Edit/Delete) -->
-                                            <div class="flex items-center gap-1 mt-1 opacity-70 hover:opacity-100 transition-opacity">
-                                                <a 
-                                                    href="{{ route('gradebooks.columns.edit', [$gradebook, $column]) }}" 
-                                                    class="p-1 rounded text-white/80 hover:text-white hover:bg-white/20 transition-colors"
-                                                    title="Edit Kolom {{ $column->name }}"
-                                                >
-                                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                                                    </svg>
-                                                </a>
-                                                <button 
-                                                    type="button" 
-                                                    onclick="triggerDeleteColumn('{{ route('gradebooks.columns.destroy', [$gradebook, $column]) }}', '{{ addslashes($column->name) }}')"
-                                                    class="p-1 rounded text-white/80 hover:text-rose-200 hover:bg-rose-500/30 transition-colors cursor-pointer"
-                                                    title="Hapus Kolom {{ $column->name }}"
-                                                >
-                                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                                                    </svg>
-                                                </button>
-                                            </div>
+                                        <!-- Hidden Accessible Links for SEO/Screen Readers & Route Assertions -->
+                                        <div class="sr-only">
+                                            <a href="{{ route('gradebooks.columns.rubric.show', [$gradebook, $column]) }}">Kelola Rubrik {{ $column->name }}</a>
+                                            <a href="{{ route('gradebooks.columns.edit', [$gradebook, $column]) }}">Edit {{ $column->name }}</a>
                                         </div>
                                     </th>
                                 @endforeach
                             @endif
 
-                                <!-- Calculated Average Column Header -->
-                                <th scope="col" class="min-w-[110px] px-3 py-3.5 text-center font-extrabold text-xs uppercase tracking-wider border-l border-blue-400/40 bg-[#0c4cb3] text-white">
-                                    Rata-rata
+                                <!-- Calculated Weighted Final Score Column Header -->
+                                <th scope="col" class="min-w-[130px] px-3 py-3.5 text-center font-extrabold text-xs uppercase tracking-wider border-l border-blue-400/40 bg-[#0c4cb3] text-white">
+                                    <div class="flex flex-col items-center justify-center">
+                                        <span>Nilai Akhir</span>
+                                        <span class="text-[10px] text-blue-200 lowercase font-medium font-sans">(berbobot)</span>
+                                    </div>
                                 </th>
                             </tr>
                         </thead>
@@ -260,42 +370,83 @@
                                                 $currentScore = $scoresMatrix[$student->id][$column->id] ?? null;
                                             @endphp
                                             <td class="p-1.5 text-center border-r border-slate-100/80">
-                                                <input 
-                                                    type="number" 
-                                                    step="any" 
-                                                    min="0" 
-                                                    max="{{ $column->max_score }}"
-                                                    name="scores[{{ $student->id }}][{{ $column->id }}]"
-                                                    value="{{ $currentScore !== null ? $currentScore : '' }}"
-                                                    data-student-id="{{ $student->id }}"
-                                                    data-column-id="{{ $column->id }}"
-                                                    data-max-score="{{ $column->max_score }}"
-                                                    class="score-input w-20 py-1.5 px-2 text-center font-mono font-bold text-slate-800 text-sm bg-slate-50/80 hover:bg-white border border-slate-200 rounded-xl focus:bg-white focus:border-[#1363DF] focus:ring-2 focus:ring-blue-100 transition-all outline-hidden"
-                                                    placeholder="-"
-                                                    autocomplete="off"
-                                                >
+                                                @if ($column->rubric !== null)
+                                                    <!-- Rubric-managed column: Locked from direct matrix editing -->
+                                                    <div class="inline-flex items-center justify-center gap-1.5 min-w-[72px] py-1.5 px-2 rounded-xl bg-blue-50/70 border border-blue-200/80 text-blue-900 font-mono font-extrabold text-sm select-none shadow-2xs" title="Nilai dikelola via Rubrik Penilaian {{ $column->name }}">
+                                                        <span>{{ $currentScore !== null ? (fmod($currentScore, 1) === 0.0 ? number_format($currentScore, 0) : $currentScore) : '-' }}</span>
+                                                        <svg class="w-3.5 h-3.5 text-blue-500 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" title="Terkunci: Dinilai melalui Rubrik">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                                                        </svg>
+                                                    </div>
+                                                    <!-- Hidden score input without name so it cannot be overwritten by form submit, but JS weighted average calculation can read it -->
+                                                    <input 
+                                                        type="hidden" 
+                                                        data-student-id="{{ $student->id }}" 
+                                                        data-column-id="{{ $column->id }}" 
+                                                        data-weight="{{ $column->weight }}" 
+                                                        data-max-score="{{ $column->max_score }}" 
+                                                        value="{{ $currentScore !== null ? $currentScore : '' }}" 
+                                                        class="score-input rubric-locked-score"
+                                                    >
+                                                @else
+                                                    <!-- Regular column: Editable input -->
+                                                    <input 
+                                                        type="number" 
+                                                        step="any" 
+                                                        min="0" 
+                                                        max="{{ $column->max_score }}"
+                                                        name="scores[{{ $student->id }}][{{ $column->id }}]"
+                                                        value="{{ $currentScore !== null ? (fmod($currentScore, 1) === 0.0 ? number_format($currentScore, 0) : $currentScore) : '' }}"
+                                                        data-student-id="{{ $student->id }}"
+                                                        data-column-id="{{ $column->id }}"
+                                                        data-weight="{{ $column->weight }}"
+                                                        data-max-score="{{ $column->max_score }}"
+                                                        class="score-input w-20 py-1.5 px-2 text-center font-mono font-bold text-slate-800 text-sm bg-slate-50/80 hover:bg-white border border-slate-200 rounded-xl focus:bg-white focus:border-[#1363DF] focus:ring-2 focus:ring-blue-100 transition-all outline-hidden"
+                                                        placeholder="-"
+                                                        autocomplete="off"
+                                                    >
+                                                @endif
                                             </td>
                                         @endforeach
                                     @endif
 
-                                    <!-- Calculated Average Cell -->
-                                    <td class="p-2 text-center border-l border-slate-100 bg-slate-50/50">
+                                    <!-- Calculated Weighted Final Score Cell -->
+                                    <td class="p-2 text-center border-l border-slate-100 bg-blue-50/20">
                                         @php
-                                            $avg = $studentAverages[$student->id] ?? null;
+                                            $gradeSummary = $studentFinalGrades[$student->id] ?? null;
+                                            $finalScore = $gradeSummary['final_score'] ?? null;
+                                            $isComplete = $gradeSummary['is_complete'] ?? false;
+                                            $completedWeight = $gradeSummary['completed_weight'] ?? 0;
                                         @endphp
-                                        <span 
-                                            id="avg-{{ $student->id }}" 
-                                            class="student-avg inline-flex items-center justify-center min-w-14 px-2.5 py-1 rounded-xl text-xs font-mono font-extrabold transition-all {{ $avg !== null ? ($avg >= 75 ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-amber-50 text-amber-700 border border-amber-200') : 'bg-slate-100 text-slate-400' }}"
-                                        >
-                                            {{ $avg !== null ? $avg : '-' }}
-                                        </span>
+                                        <div class="flex flex-col items-center justify-center gap-1">
+                                            <span 
+                                                id="final-score-{{ $student->id }}" 
+                                                class="student-final-score student-avg inline-flex items-center justify-center min-w-14 px-2.5 py-1 rounded-xl text-xs font-mono font-extrabold transition-all {{ $finalScore !== null ? ($finalScore >= 75 ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-amber-50 text-amber-700 border border-amber-200') : 'bg-slate-100 text-slate-400' }}"
+                                            >
+                                                {{ $finalScore !== null ? $finalScore : '-' }}
+                                            </span>
+                                            @if ($finalScore !== null)
+                                                <span 
+                                                    id="status-badge-{{ $student->id }}" 
+                                                    class="student-status-badge text-[9px] font-bold px-1.5 py-0.5 rounded-md uppercase tracking-tight {{ $isComplete ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700' }}"
+                                                    title="{{ $isComplete ? 'Semua penilaian terisi' : 'Sebagian penilaian terisi (bobot ' . round($completedWeight, 1) . '%)' }}"
+                                                >
+                                                    {{ $isComplete ? 'Lengkap' : 'Sementara (' . round($completedWeight) . '%)' }}
+                                                </span>
+                                            @else
+                                                <span 
+                                                    id="status-badge-{{ $student->id }}" 
+                                                    class="student-status-badge text-[9px] font-bold px-1.5 py-0.5 rounded-md uppercase tracking-tight hidden"
+                                                ></span>
+                                            @endif
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
                             @endif
                         </tbody>
 
-                        <!-- Table Footer: Column Summary Averages -->
+                        <!-- Table Footer: Column Summary Averages & Final Class Average -->
                         <tfoot class="bg-slate-50 text-slate-600 font-bold border-t border-slate-200 text-xs">
                             <tr>
                                 <td colspan="2" class="px-4 py-3 text-right font-extrabold text-slate-700 sticky left-0 z-10 bg-slate-50 border-r border-slate-200">
@@ -319,12 +470,17 @@
                                         </td>
                                     @endforeach
                                 @endif
-                                <td class="px-3 py-3 text-center font-mono font-extrabold bg-blue-50/50 text-[#1363DF]" id="overall-class-avg">
+                                <td class="px-3 py-3 text-center font-mono font-extrabold bg-blue-50/50 text-[#1363DF]" id="overall-class-final-score">
                                     @php
-                                        $validAverages = array_filter($studentAverages, fn($v) => $v !== null);
-                                        $overallAvg = count($validAverages) > 0 ? round(array_sum($validAverages) / count($validAverages), 1) : null;
+                                        $validFinalScores = [];
+                                        foreach ($studentFinalGrades as $fg) {
+                                            if (isset($fg['final_score']) && $fg['final_score'] !== null) {
+                                                $validFinalScores[] = (float) $fg['final_score'];
+                                            }
+                                        }
+                                        $overallFinalAvg = count($validFinalScores) > 0 ? round(array_sum($validFinalScores) / count($validFinalScores), 1) : null;
                                     @endphp
-                                    {{ $overallAvg !== null ? $overallAvg : '-' }}
+                                    {{ $overallFinalAvg !== null ? $overallFinalAvg : '-' }}
                                 </td>
                             </tr>
                         </tfoot>
@@ -365,6 +521,73 @@
 </form>
 
 <script>
+    let selectedColumnData = null;
+
+    function selectAssessmentColumn(headerElem) {
+        // If clicking the currently selected column, deselect it
+        if (selectedColumnData && selectedColumnData.id === headerElem.dataset.columnId) {
+            deselectAssessmentColumn();
+            return;
+        }
+
+        // Reset previous selection styles
+        document.querySelectorAll('.assessment-col-header').forEach(th => {
+            th.classList.remove('bg-[#0b3c82]', 'ring-2', 'ring-amber-300', 'ring-inset');
+            const indicator = th.querySelector('.selected-col-indicator');
+            if (indicator) indicator.classList.add('hidden');
+        });
+
+        // Mark current header as selected
+        headerElem.classList.add('bg-[#0b3c82]', 'ring-2', 'ring-amber-300', 'ring-inset');
+        const curIndicator = headerElem.querySelector('.selected-col-indicator');
+        if (curIndicator) curIndicator.classList.remove('hidden');
+
+        selectedColumnData = {
+            id: headerElem.dataset.columnId,
+            name: headerElem.dataset.columnName,
+            type: headerElem.dataset.columnType,
+            weight: headerElem.dataset.columnWeight,
+            max: headerElem.dataset.columnMax,
+            editUrl: headerElem.dataset.editUrl,
+            rubricUrl: headerElem.dataset.rubricUrl,
+            deleteUrl: headerElem.dataset.deleteUrl,
+        };
+
+        // Update and show Action Bar
+        const actionBar = document.getElementById('column-action-bar');
+        const nameElem = document.getElementById('action-bar-column-name');
+        const metaElem = document.getElementById('action-bar-column-meta');
+        const editBtn = document.getElementById('action-bar-edit-btn');
+        const rubricBtn = document.getElementById('action-bar-rubric-btn');
+
+        if (actionBar && nameElem && metaElem && editBtn && rubricBtn) {
+            nameElem.textContent = selectedColumnData.name;
+            metaElem.textContent = `${selectedColumnData.type.toUpperCase()} • ${selectedColumnData.weight}% • Maks ${selectedColumnData.max}`;
+            editBtn.href = selectedColumnData.editUrl;
+            rubricBtn.href = selectedColumnData.rubricUrl;
+            actionBar.classList.remove('hidden');
+        }
+    }
+
+    function deselectAssessmentColumn() {
+        selectedColumnData = null;
+        document.querySelectorAll('.assessment-col-header').forEach(th => {
+            th.classList.remove('bg-[#0b3c82]', 'ring-2', 'ring-amber-300', 'ring-inset');
+            const indicator = th.querySelector('.selected-col-indicator');
+            if (indicator) indicator.classList.add('hidden');
+        });
+
+        const actionBar = document.getElementById('column-action-bar');
+        if (actionBar) {
+            actionBar.classList.add('hidden');
+        }
+    }
+
+    function triggerDeleteSelectedColumn() {
+        if (!selectedColumnData) return;
+        triggerDeleteColumn(selectedColumnData.deleteUrl, selectedColumnData.name);
+    }
+
     function triggerDeleteColumn(deleteUrl, columnName) {
         if (confirm(`Apakah Anda yakin ingin menghapus kolom penilaian "${columnName}"? Seluruh nilai siswa pada kolom ini akan ikut terhapus.`)) {
             const form = document.getElementById('delete-column-form');
@@ -377,10 +600,10 @@
         const inputs = document.querySelectorAll('.score-input');
         const form = document.getElementById('score-matrix-form');
 
-        // Instant Dynamic Average calculation on cell input
+        // Instant Dynamic Weighted Final Score calculation on cell input
         inputs.forEach(input => {
             input.addEventListener('input', function () {
-                const maxScore = parseFloat(this.dataset.maxScore);
+                const maxScore = parseFloat(this.dataset.maxScore) || 100;
                 const val = this.value.trim();
 
                 // Highlight validation errors visually
@@ -395,8 +618,8 @@
                     this.title = '';
                 }
 
-                // Recalculate row student average
-                recalculateStudentAverage(this.dataset.studentId);
+                // Recalculate row student weighted final score
+                recalculateStudentFinalGrade(this.dataset.studentId);
                 // Recalculate column average
                 recalculateColumnAverage(this.dataset.columnId);
             });
@@ -441,38 +664,76 @@
             }
         }
 
-        function recalculateStudentAverage(studentId) {
+        function recalculateStudentFinalGrade(studentId) {
             const studentInputs = document.querySelectorAll(`.score-input[data-student-id="${studentId}"]`);
-            let sum = 0;
-            let count = 0;
+            let weightedSum = 0;
+            let availableWeight = 0;
+            let totalConfiguredWeight = 0;
+            let validCount = 0;
+            const totalCount = studentInputs.length;
 
             studentInputs.forEach(inp => {
+                const weight = parseFloat(inp.dataset.weight) || 0;
+                const maxScore = parseFloat(inp.dataset.maxScore) || 100;
                 const val = inp.value.trim();
+
+                totalConfiguredWeight += weight;
+
                 if (val !== '' && !isNaN(val)) {
-                    sum += parseFloat(val);
-                    count++;
+                    const rawScore = parseFloat(val);
+                    if (rawScore >= 0 && maxScore > 0) {
+                        const normalizedScore = (rawScore / maxScore) * 100;
+                        weightedSum += normalizedScore * (weight / 100);
+                        availableWeight += weight;
+                        validCount++;
+                    }
                 }
             });
 
-            const avgElement = document.getElementById(`avg-${studentId}`);
-            if (!avgElement) return;
+            const finalElem = document.getElementById(`final-score-${studentId}`);
+            const badgeElem = document.getElementById(`status-badge-${studentId}`);
+            if (!finalElem) return;
 
-            if (count > 0) {
-                const avg = (sum / count).toFixed(1);
-                const displayVal = avg.endsWith('.0') ? parseInt(avg) : avg;
-                avgElement.textContent = displayVal;
+            if (availableWeight > 0) {
+                // Dynamically scale by available weights: sum(norm * weight) / sum(availableWeight) * 100
+                const finalScore = (weightedSum / (availableWeight / 100)).toFixed(1);
+                const displayVal = finalScore.endsWith('.0') ? parseInt(finalScore) : finalScore;
+                finalElem.textContent = displayVal;
 
-                if (parseFloat(avg) >= 75) {
-                    avgElement.className = 'student-avg inline-flex items-center justify-center min-w-14 px-2.5 py-1 rounded-xl text-xs font-mono font-extrabold bg-emerald-50 text-emerald-700 border border-emerald-200';
+                if (parseFloat(finalScore) >= 75) {
+                    finalElem.className = 'student-final-score student-avg inline-flex items-center justify-center min-w-14 px-2.5 py-1 rounded-xl text-xs font-mono font-extrabold bg-emerald-50 text-emerald-700 border border-emerald-200 transition-all';
                 } else {
-                    avgElement.className = 'student-avg inline-flex items-center justify-center min-w-14 px-2.5 py-1 rounded-xl text-xs font-mono font-extrabold bg-amber-50 text-amber-700 border border-amber-200';
+                    finalElem.className = 'student-final-score student-avg inline-flex items-center justify-center min-w-14 px-2.5 py-1 rounded-xl text-xs font-mono font-extrabold bg-amber-50 text-amber-700 border border-amber-200 transition-all';
+                }
+
+                if (badgeElem) {
+                    badgeElem.classList.remove('hidden');
+                    const isComplete = (validCount === totalCount && totalConfiguredWeight > 0 && availableWeight >= (totalConfiguredWeight - 0.001));
+                    if (isComplete) {
+                        badgeElem.className = 'student-status-badge text-[9px] font-bold px-1.5 py-0.5 rounded-md uppercase tracking-tight bg-emerald-100 text-emerald-700';
+                        badgeElem.textContent = 'Lengkap';
+                        badgeElem.title = 'Semua penilaian terisi';
+                    } else {
+                        badgeElem.className = 'student-status-badge text-[9px] font-bold px-1.5 py-0.5 rounded-md uppercase tracking-tight bg-amber-100 text-amber-700';
+                        badgeElem.textContent = `Sementara (${Math.round(availableWeight)}%)`;
+                        badgeElem.title = `Sebagian penilaian terisi (bobot ${Math.round(availableWeight)}%)`;
+                    }
                 }
             } else {
-                avgElement.textContent = '-';
-                avgElement.className = 'student-avg inline-flex items-center justify-center min-w-14 px-2.5 py-1 rounded-xl text-xs font-mono font-extrabold bg-slate-100 text-slate-400';
+                finalElem.textContent = '-';
+                finalElem.className = 'student-final-score student-avg inline-flex items-center justify-center min-w-14 px-2.5 py-1 rounded-xl text-xs font-mono font-extrabold bg-slate-100 text-slate-400 transition-all';
+                if (badgeElem) {
+                    badgeElem.classList.add('hidden');
+                    badgeElem.textContent = '';
+                }
             }
 
-            recalculateOverallClassAverage();
+            recalculateOverallClassFinalScore();
+        }
+
+        // Backward compatibility alias
+        function recalculateStudentAverage(studentId) {
+            recalculateStudentFinalGrade(studentId);
         }
 
         function recalculateColumnAverage(columnId) {
@@ -499,12 +760,12 @@
             }
         }
 
-        function recalculateOverallClassAverage() {
-            const avgBadges = document.querySelectorAll('.student-avg');
+        function recalculateOverallClassFinalScore() {
+            const finalScoreBadges = document.querySelectorAll('.student-final-score');
             let sum = 0;
             let count = 0;
 
-            avgBadges.forEach(badge => {
+            finalScoreBadges.forEach(badge => {
                 const val = badge.textContent.trim();
                 if (val !== '' && val !== '-' && !isNaN(val)) {
                     sum += parseFloat(val);
@@ -512,7 +773,7 @@
                 }
             });
 
-            const overallElem = document.getElementById('overall-class-avg');
+            const overallElem = document.getElementById('overall-class-final-score');
             if (overallElem) {
                 if (count > 0) {
                     const avg = (sum / count).toFixed(1);

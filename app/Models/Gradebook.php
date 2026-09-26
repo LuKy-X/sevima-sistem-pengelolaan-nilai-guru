@@ -123,4 +123,102 @@ class Gradebook extends Model
 
         return round((float) $scores->average(), 2);
     }
+
+    /**
+     * Calculate the weighted final score for a student in this gradebook.
+     */
+    public function calculateStudentFinalGrade(int $studentId): ?float
+    {
+        $summary = $this->getStudentGradeSummary($studentId);
+
+        return $summary['final_score'];
+    }
+
+    /**
+     * Calculate weighted final grade and detailed progress summary for a student.
+     *
+     * @return array{
+     *     final_score: float|null,
+     *     is_complete: bool,
+     *     completed_count: int,
+     *     total_columns: int,
+     *     completed_weight: float,
+     *     total_weight: float,
+     *     breakdown: array<int, array{column_id: int, column_name: string, raw_score: float|null, max_score: float, normalized_score: float|null, weight: float, weighted_score: float|null}>
+     * }
+     */
+    public function getStudentGradeSummary(int $studentId): array
+    {
+        $columns = $this->assessmentColumns;
+        if ($columns->isEmpty()) {
+            return [
+                'final_score' => null,
+                'is_complete' => true,
+                'completed_count' => 0,
+                'total_columns' => 0,
+                'completed_weight' => 0.0,
+                'total_weight' => 0.0,
+                'breakdown' => [],
+            ];
+        }
+
+        $scores = $this->scores()
+            ->where('student_id', $studentId)
+            ->get()
+            ->keyBy('assessment_column_id');
+
+        $weightedSum = 0.0;
+        $availableWeightSum = 0.0;
+        $totalConfiguredWeight = (float) $columns->sum('weight');
+        $completedCount = 0;
+        $breakdown = [];
+
+        foreach ($columns as $column) {
+            $scoreModel = $scores->get($column->id);
+            $rawScore = $scoreModel?->score !== null ? (float) $scoreModel->score : null;
+            $weight = (float) $column->weight;
+            $maxScore = (float) ($column->max_score > 0 ? $column->max_score : 100.0);
+
+            $normalizedScore = null;
+            $weightedScore = null;
+
+            // Note: 0 is a valid score, not treated as missing
+            if ($rawScore !== null) {
+                $completedCount++;
+                $normalizedScore = ($rawScore / $maxScore) * 100.0;
+                $weightedScore = $normalizedScore * ($weight / 100.0);
+
+                $weightedSum += ($normalizedScore * $weight);
+                $availableWeightSum += $weight;
+            }
+
+            $breakdown[$column->id] = [
+                'column_id' => $column->id,
+                'column_name' => $column->name,
+                'raw_score' => $rawScore,
+                'max_score' => $maxScore,
+                'normalized_score' => $normalizedScore !== null ? round($normalizedScore, 2) : null,
+                'weight' => $weight,
+                'weighted_score' => $weightedScore !== null ? round($weightedScore, 2) : null,
+            ];
+        }
+
+        $finalScore = null;
+        if ($availableWeightSum > 0) {
+            // Proportional weighted average based on available assessments
+            $finalScore = round($weightedSum / $availableWeightSum, 2);
+        }
+
+        $isComplete = ($completedCount === $columns->count()) && ($columns->count() > 0);
+
+        return [
+            'final_score' => $finalScore,
+            'is_complete' => $isComplete,
+            'completed_count' => $completedCount,
+            'total_columns' => $columns->count(),
+            'completed_weight' => round($availableWeightSum, 2),
+            'total_weight' => round($totalConfiguredWeight, 2),
+            'breakdown' => $breakdown,
+        ];
+    }
 }
