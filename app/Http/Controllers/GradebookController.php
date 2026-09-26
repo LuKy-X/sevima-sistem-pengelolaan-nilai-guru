@@ -76,15 +76,32 @@ class GradebookController extends Controller
     {
         Gate::authorize('view', $gradebook);
 
-        $gradebook->load(['classroom', 'subject', 'academicYear']);
+        $gradebook->load(['classroom', 'subject', 'academicYear', 'assessmentColumns.scores']);
 
-        $students = $gradebook->classroom
-            ->students()
-            ->wherePivot('academic_year_id', $gradebook->academic_year_id)
-            ->orderBy('name')
-            ->get();
+        $students = $gradebook->getEnrolledStudents();
 
-        return view('gradebooks.show', compact('gradebook', 'students'));
+        $scoresMatrix = [];
+        foreach ($gradebook->assessmentColumns as $column) {
+            foreach ($column->scores as $score) {
+                $scoresMatrix[$score->student_id][$column->id] = $score->score;
+            }
+        }
+
+        $studentAverages = [];
+        foreach ($students as $student) {
+            $studentScores = [];
+            foreach ($gradebook->assessmentColumns as $column) {
+                if (isset($scoresMatrix[$student->id][$column->id]) && $scoresMatrix[$student->id][$column->id] !== null) {
+                    $studentScores[] = (float) $scoresMatrix[$student->id][$column->id];
+                }
+            }
+
+            $studentAverages[$student->id] = count($studentScores) > 0
+                ? round(array_sum($studentScores) / count($studentScores), 2)
+                : null;
+        }
+
+        return view('gradebooks.show', compact('gradebook', 'students', 'scoresMatrix', 'studentAverages'));
     }
 
     /**
