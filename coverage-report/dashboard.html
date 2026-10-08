@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\laragon\www\sistem-pengelolaan-nilai-guru\app</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="_css/bootstrap.min.css?v=12.5.7" rel="stylesheet" type="text/css">
+  <link href="_css/billboard.min.css?v=12.5.7" rel="stylesheet" type="text/css">
+  <link href="_css/style.css?v=12.5.7" rel="stylesheet" type="text/css">
+  <link href="_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">C:\laragon\www\sistem-pengelolaan-nilai-guru\app</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classesCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Controllers/RubricCriterionController.php.html#15">App\Http\Controllers\RubricCriterionController</a></td><td class="text-right">64%</td></tr>
+       <tr><td><a href="Http/Requests/StoreStudentRubricScoreRequest.php.html#12">App\Http\Requests\StoreStudentRubricScoreRequest</a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Http/Controllers/RubricLevelController.php.html#15">App\Http\Controllers\RubricLevelController</a></td><td class="text-right">68%</td></tr>
+       <tr><td><a href="Http/Controllers/RubricController.php.html#16">App\Http\Controllers\RubricController</a></td><td class="text-right">70%</td></tr>
+       <tr><td><a href="Policies/AssessmentColumnPolicy.php.html#9">App\Policies\AssessmentColumnPolicy</a></td><td class="text-right">71%</td></tr>
+       <tr><td><a href="Policies/GradebookPolicy.php.html#8">App\Policies\GradebookPolicy</a></td><td class="text-right">71%</td></tr>
+       <tr><td><a href="Http/Requests/BatchStoreScoreRequest.php.html#10">App\Http\Requests\BatchStoreScoreRequest</a></td><td class="text-right">73%</td></tr>
+       <tr><td><a href="Http/Controllers/StudentRubricScoreController.php.html#16">App\Http\Controllers\StudentRubricScoreController</a></td><td class="text-right">78%</td></tr>
+       <tr><td><a href="Models/Rubric.php.html#12">App\Models\Rubric</a></td><td class="text-right">82%</td></tr>
+       <tr><td><a href="Http/Requests/StoreRubricRequest.php.html#11">App\Http\Requests\StoreRubricRequest</a></td><td class="text-right">84%</td></tr>
+       <tr><td><a href="Http/Controllers/AssessmentColumnController.php.html#13">App\Http\Controllers\AssessmentColumnController</a></td><td class="text-right">84%</td></tr>
+       <tr><td><a href="Models/Gradebook.php.html#14">App\Models\Gradebook</a></td><td class="text-right">86%</td></tr>
+       <tr><td><a href="Http/Controllers/ScoreController.php.html#13">App\Http\Controllers\ScoreController</a></td><td class="text-right">89%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+         <th class="text-right">Complexity</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Requests/StoreStudentRubricScoreRequest.php.html#12">App\Http\Requests\StoreStudentRubricScoreRequest</a></td><td class="text-right">66.7%</td><td class="text-right">28</td><td class="text-right">57</td></tr>
+       <tr><td><a href="Http/Requests/BatchStoreScoreRequest.php.html#10">App\Http\Requests\BatchStoreScoreRequest</a></td><td class="text-right">73.5%</td><td class="text-right">24</td><td class="text-right">34</td></tr>
+       <tr><td><a href="Models/Rubric.php.html#12">App\Models\Rubric</a></td><td class="text-right">82.2%</td><td class="text-right">24</td><td class="text-right">27</td></tr>
+       <tr><td><a href="Models/Gradebook.php.html#14">App\Models\Gradebook</a></td><td class="text-right">86.1%</td><td class="text-right">24</td><td class="text-right">25</td></tr>
+       <tr><td><a href="Http/Controllers/StudentRubricScoreController.php.html#16">App\Http\Controllers\StudentRubricScoreController</a></td><td class="text-right">78.8%</td><td class="text-right">20</td><td class="text-right">23</td></tr>
+       <tr><td><a href="Http/Controllers/RubricController.php.html#16">App\Http\Controllers\RubricController</a></td><td class="text-right">70.0%</td><td class="text-right">14</td><td class="text-right">19</td></tr>
+       <tr><td><a href="Http/Controllers/RubricCriterionController.php.html#15">App\Http\Controllers\RubricCriterionController</a></td><td class="text-right">64.3%</td><td class="text-right">12</td><td class="text-right">18</td></tr>
+       <tr><td><a href="Http/Requests/StoreRubricRequest.php.html#11">App\Http\Requests\StoreRubricRequest</a></td><td class="text-right">84.2%</td><td class="text-right">11</td><td class="text-right">11</td></tr>
+       <tr><td><a href="Http/Controllers/ScoreController.php.html#13">App\Http\Controllers\ScoreController</a></td><td class="text-right">89.8%</td><td class="text-right">10</td><td class="text-right">10</td></tr>
+       <tr><td><a href="Http/Controllers/AssessmentColumnController.php.html#13">App\Http\Controllers\AssessmentColumnController</a></td><td class="text-right">84.6%</td><td class="text-right">6</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Policies/AssessmentColumnPolicy.php.html#9">App\Policies\AssessmentColumnPolicy</a></td><td class="text-right">71.4%</td><td class="text-right">6</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/RubricLevelController.php.html#15">App\Http\Controllers\RubricLevelController</a></td><td class="text-right">68.8%</td><td class="text-right">5</td><td class="text-right">5</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2 style="margin-top: 3rem;">Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodsCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Controllers/AuthController.php.html#15"><abbr title="App\Http\Controllers\AuthController::showLoginForm">showLoginForm</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/GradebookController.php.html#48"><abbr title="App\Http\Controllers\GradebookController::create">create</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/GradebookController.php.html#542"><abbr title="App\Http\Controllers\GradebookController::edit">edit</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/ScoreController.php.html#92"><abbr title="App\Http\Controllers\ScoreController::batchStore">batchStore</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Models/Gradebook.php.html#35"><abbr title="App\Models\Gradebook::teacher">teacher</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/AssessmentColumnPolicy.php.html#14"><abbr title="App\Policies\AssessmentColumnPolicy::viewAny">viewAny</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/GradebookPolicy.php.html#53"><abbr title="App\Policies\GradebookPolicy::restore">restore</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Policies/GradebookPolicy.php.html#61"><abbr title="App\Policies\GradebookPolicy::forceDelete">forceDelete</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Http/Controllers/RubricController.php.html#117"><abbr title="App\Http\Controllers\RubricController::destroy">destroy</abbr></a></td><td class="text-right">22%</td></tr>
+       <tr><td><a href="Http/Controllers/AssessmentColumnController.php.html#18"><abbr title="App\Http\Controllers\AssessmentColumnController::create">create</abbr></a></td><td class="text-right">33%</td></tr>
+       <tr><td><a href="Http/Controllers/RubricController.php.html#53"><abbr title="App\Http\Controllers\RubricController::store">store</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Http/Requests/BatchStoreScoreRequest.php.html#41"><abbr title="App\Http\Requests\BatchStoreScoreRequest::normalizedScores">normalizedScores</abbr></a></td><td class="text-right">50%</td></tr>
+       <tr><td><a href="Http/Controllers/RubricCriterionController.php.html#20"><abbr title="App\Http\Controllers\RubricCriterionController::store">store</abbr></a></td><td class="text-right">53%</td></tr>
+       <tr><td><a href="Http/Controllers/GradebookController.php.html#62"><abbr title="App\Http\Controllers\GradebookController::store">store</abbr></a></td><td class="text-right">63%</td></tr>
+       <tr><td><a href="Http/Requests/StoreStudentRubricScoreRequest.php.html#42"><abbr title="App\Http\Requests\StoreStudentRubricScoreRequest::withValidator">withValidator</abbr></a></td><td class="text-right">63%</td></tr>
+       <tr><td><a href="Http/Controllers/AssessmentColumnController.php.html#50"><abbr title="App\Http\Controllers\AssessmentColumnController::edit">edit</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Http/Controllers/RubricCriterionController.php.html#51"><abbr title="App\Http\Controllers\RubricCriterionController::update">update</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Policies/AssessmentColumnPolicy.php.html#30"><abbr title="App\Policies\AssessmentColumnPolicy::create">create</abbr></a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Http/Controllers/RubricLevelController.php.html#20"><abbr title="App\Http\Controllers\RubricLevelController::update">update</abbr></a></td><td class="text-right">68%</td></tr>
+       <tr><td><a href="Http/Controllers/RubricCriterionController.php.html#82"><abbr title="App\Http\Controllers\RubricCriterionController::destroy">destroy</abbr></a></td><td class="text-right">71%</td></tr>
+       <tr><td><a href="Http/Requests/StoreRubricRequest.php.html#42"><abbr title="App\Http\Requests\StoreRubricRequest::withValidator">withValidator</abbr></a></td><td class="text-right">71%</td></tr>
+       <tr><td><a href="Models/Rubric.php.html#181"><abbr title="App\Models\Rubric::syncStudentScore">syncStudentScore</abbr></a></td><td class="text-right">73%</td></tr>
+       <tr><td><a href="Http/Requests/StoreRubricCriterionRequest.php.html#16"><abbr title="App\Http\Requests\StoreRubricCriterionRequest::authorize">authorize</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Http/Requests/StoreRubricRequest.php.html#16"><abbr title="App\Http\Requests\StoreRubricRequest::authorize">authorize</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Http/Requests/StoreStudentRubricScoreRequest.php.html#17"><abbr title="App\Http\Requests\StoreStudentRubricScoreRequest::authorize">authorize</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateRubricCriterionRequest.php.html#17"><abbr title="App\Http\Requests\UpdateRubricCriterionRequest::authorize">authorize</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateRubricLevelRequest.php.html#14"><abbr title="App\Http\Requests\UpdateRubricLevelRequest::authorize">authorize</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateRubricRequest.php.html#15"><abbr title="App\Http\Requests\UpdateRubricRequest::authorize">authorize</abbr></a></td><td class="text-right">75%</td></tr>
+       <tr><td><a href="Http/Controllers/RubricController.php.html#74"><abbr title="App\Http\Controllers\RubricController::update">update</abbr></a></td><td class="text-right">78%</td></tr>
+       <tr><td><a href="Http/Controllers/StudentRubricScoreController.php.html#21"><abbr title="App\Http\Controllers\StudentRubricScoreController::store">store</abbr></a></td><td class="text-right">78%</td></tr>
+       <tr><td><a href="Models/Rubric.php.html#82"><abbr title="App\Models\Rubric::getStudentScoreSummary">getStudentScoreSummary</abbr></a></td><td class="text-right">82%</td></tr>
+       <tr><td><a href="Models/Gradebook.php.html#150"><abbr title="App\Models\Gradebook::getStudentGradeSummary">getStudentGradeSummary</abbr></a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Models/Gradebook.php.html#113"><abbr title="App\Models\Gradebook::calculateStudentAverage">calculateStudentAverage</abbr></a></td><td class="text-right">85%</td></tr>
+       <tr><td><a href="Http/Requests/StoreRubricCriterionRequest.php.html#44"><abbr title="App\Http\Requests\StoreRubricCriterionRequest::withValidator">withValidator</abbr></a></td><td class="text-right">86%</td></tr>
+       <tr><td><a href="Http/Controllers/AssessmentColumnController.php.html#30"><abbr title="App\Http\Controllers\AssessmentColumnController::store">store</abbr></a></td><td class="text-right">87%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateRubricCriterionRequest.php.html#45"><abbr title="App\Http\Requests\UpdateRubricCriterionRequest::withValidator">withValidator</abbr></a></td><td class="text-right">88%</td></tr>
+       <tr><td><a href="Http/Requests/BatchStoreScoreRequest.php.html#95"><abbr title="App\Http\Requests\BatchStoreScoreRequest::withValidator">withValidator</abbr></a></td><td class="text-right">88%</td></tr>
+       <tr><td><a href="Http/Requests/UpdateRubricRequest.php.html#45"><abbr title="App\Http\Requests\UpdateRubricRequest::withValidator">withValidator</abbr></a></td><td class="text-right">88%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+         <th class="text-right">Complexity</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Http/Requests/StoreStudentRubricScoreRequest.php.html#42"><abbr title="App\Http\Requests\StoreStudentRubricScoreRequest::withValidator">withValidator</abbr></a></td><td class="text-right">63.8%</td><td class="text-right">23</td><td class="text-right">48</td></tr>
+       <tr><td><a href="Http/Requests/BatchStoreScoreRequest.php.html#41"><abbr title="App\Http\Requests\BatchStoreScoreRequest::normalizedScores">normalizedScores</abbr></a></td><td class="text-right">50.0%</td><td class="text-right">12</td><td class="text-right">30</td></tr>
+       <tr><td><a href="Http/Controllers/StudentRubricScoreController.php.html#21"><abbr title="App\Http\Controllers\StudentRubricScoreController::store">store</abbr></a></td><td class="text-right">78.8%</td><td class="text-right">20</td><td class="text-right">23</td></tr>
+       <tr><td><a href="Models/Rubric.php.html#82"><abbr title="App\Models\Rubric::getStudentScoreSummary">getStudentScoreSummary</abbr></a></td><td class="text-right">82.6%</td><td class="text-right">17</td><td class="text-right">18</td></tr>
+       <tr><td><a href="Models/Gradebook.php.html#150"><abbr title="App\Models\Gradebook::getStudentGradeSummary">getStudentGradeSummary</abbr></a></td><td class="text-right">83.6%</td><td class="text-right">10</td><td class="text-right">10</td></tr>
+       <tr><td><a href="Http/Requests/BatchStoreScoreRequest.php.html#95"><abbr title="App\Http\Requests\BatchStoreScoreRequest::withValidator">withValidator</abbr></a></td><td class="text-right">88.6%</td><td class="text-right">9</td><td class="text-right">9</td></tr>
+       <tr><td><a href="Http/Controllers/RubricController.php.html#74"><abbr title="App\Http\Controllers\RubricController::update">update</abbr></a></td><td class="text-right">78.3%</td><td class="text-right">7</td><td class="text-right">7</td></tr>
+       <tr><td><a href="Http/Controllers/RubricController.php.html#117"><abbr title="App\Http\Controllers\RubricController::destroy">destroy</abbr></a></td><td class="text-right">22.2%</td><td class="text-right">3</td><td class="text-right">7</td></tr>
+       <tr><td><a href="Http/Requests/UpdateRubricCriterionRequest.php.html#45"><abbr title="App\Http\Requests\UpdateRubricCriterionRequest::withValidator">withValidator</abbr></a></td><td class="text-right">88.2%</td><td class="text-right">6</td><td class="text-right">6</td></tr>
+       <tr><td><a href="Http/Controllers/RubricCriterionController.php.html#20"><abbr title="App\Http\Controllers\RubricCriterionController::store">store</abbr></a></td><td class="text-right">53.8%</td><td class="text-right">4</td><td class="text-right">5</td></tr>
+       <tr><td><a href="Http/Controllers/RubricLevelController.php.html#20"><abbr title="App\Http\Controllers\RubricLevelController::update">update</abbr></a></td><td class="text-right">68.8%</td><td class="text-right">5</td><td class="text-right">5</td></tr>
+       <tr><td><a href="Http/Requests/StoreRubricCriterionRequest.php.html#44"><abbr title="App\Http\Requests\StoreRubricCriterionRequest::withValidator">withValidator</abbr></a></td><td class="text-right">86.7%</td><td class="text-right">5</td><td class="text-right">5</td></tr>
+       <tr><td><a href="Http/Requests/StoreRubricRequest.php.html#42"><abbr title="App\Http\Requests\StoreRubricRequest::withValidator">withValidator</abbr></a></td><td class="text-right">71.4%</td><td class="text-right">5</td><td class="text-right">5</td></tr>
+       <tr><td><a href="Http/Controllers/RubricCriterionController.php.html#51"><abbr title="App\Http\Controllers\RubricCriterionController::update">update</abbr></a></td><td class="text-right">66.7%</td><td class="text-right">4</td><td class="text-right">4</td></tr>
+       <tr><td><a href="Http/Controllers/RubricCriterionController.php.html#82"><abbr title="App\Http\Controllers\RubricCriterionController::destroy">destroy</abbr></a></td><td class="text-right">71.4%</td><td class="text-right">4</td><td class="text-right">4</td></tr>
+       <tr><td><a href="Http/Requests/StoreRubricCriterionRequest.php.html#16"><abbr title="App\Http\Requests\StoreRubricCriterionRequest::authorize">authorize</abbr></a></td><td class="text-right">75.0%</td><td class="text-right">4</td><td class="text-right">4</td></tr>
+       <tr><td><a href="Http/Requests/StoreRubricRequest.php.html#16"><abbr title="App\Http\Requests\StoreRubricRequest::authorize">authorize</abbr></a></td><td class="text-right">75.0%</td><td class="text-right">4</td><td class="text-right">4</td></tr>
+       <tr><td><a href="Http/Requests/StoreStudentRubricScoreRequest.php.html#17"><abbr title="App\Http\Requests\StoreStudentRubricScoreRequest::authorize">authorize</abbr></a></td><td class="text-right">75.0%</td><td class="text-right">4</td><td class="text-right">4</td></tr>
+       <tr><td><a href="Http/Requests/UpdateRubricCriterionRequest.php.html#17"><abbr title="App\Http\Requests\UpdateRubricCriterionRequest::authorize">authorize</abbr></a></td><td class="text-right">75.0%</td><td class="text-right">4</td><td class="text-right">4</td></tr>
+       <tr><td><a href="Http/Requests/UpdateRubricLevelRequest.php.html#14"><abbr title="App\Http\Requests\UpdateRubricLevelRequest::authorize">authorize</abbr></a></td><td class="text-right">75.0%</td><td class="text-right">4</td><td class="text-right">4</td></tr>
+       <tr><td><a href="Http/Requests/UpdateRubricRequest.php.html#15"><abbr title="App\Http\Requests\UpdateRubricRequest::authorize">authorize</abbr></a></td><td class="text-right">75.0%</td><td class="text-right">4</td><td class="text-right">4</td></tr>
+       <tr><td><a href="Http/Requests/UpdateRubricRequest.php.html#45"><abbr title="App\Http\Requests\UpdateRubricRequest::withValidator">withValidator</abbr></a></td><td class="text-right">88.9%</td><td class="text-right">4</td><td class="text-right">4</td></tr>
+       <tr><td><a href="Http/Controllers/AssessmentColumnController.php.html#30"><abbr title="App\Http\Controllers\AssessmentColumnController::store">store</abbr></a></td><td class="text-right">87.5%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="Http/Controllers/GradebookController.php.html#62"><abbr title="App\Http\Controllers\GradebookController::store">store</abbr></a></td><td class="text-right">63.6%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="Http/Controllers/RubricController.php.html#53"><abbr title="App\Http\Controllers\RubricController::store">store</abbr></a></td><td class="text-right">50.0%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="Models/Gradebook.php.html#113"><abbr title="App\Models\Gradebook::calculateStudentAverage">calculateStudentAverage</abbr></a></td><td class="text-right">85.7%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="Models/Rubric.php.html#181"><abbr title="App\Models\Rubric::syncStudentScore">syncStudentScore</abbr></a></td><td class="text-right">73.3%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="Policies/AssessmentColumnPolicy.php.html#30"><abbr title="App\Policies\AssessmentColumnPolicy::create">create</abbr></a></td><td class="text-right">66.7%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 12.5.7</a> using <a href="https://www.php.net/" target="_top">PHP 8.4.16</a> and <a href="https://phpunit.de/">PHPUnit 12.5.36</a> at Sat Sep 26 8:30:20 UTC 2026.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="_js/billboard.pkgd.min.js?v=12.5.7" type="text/javascript"></script>
+  <script type="application/json" id="complexity_class">[[64.28571428571429,12,"Http\/Controllers\/RubricCriterionController.php.html#15","App\\Http\\Controllers\\RubricCriterionController","18.56"],[66.66666666666666,28,"Http\/Requests\/StoreStudentRubricScoreRequest.php.html#12","App\\Http\\Requests\\StoreStudentRubricScoreRequest","57.04"],[68.75,5,"Http\/Controllers\/RubricLevelController.php.html#15","App\\Http\\Controllers\\RubricLevelController","5.76"],[70,14,"Http\/Controllers\/RubricController.php.html#16","App\\Http\\Controllers\\RubricController","19.29"],[71.42857142857143,6,"Policies\/AssessmentColumnPolicy.php.html#9","App\\Policies\\AssessmentColumnPolicy","6.84"],[71.42857142857143,7,"Policies\/GradebookPolicy.php.html#8","App\\Policies\\GradebookPolicy","8.14"],[73.52941176470588,24,"Http\/Requests\/BatchStoreScoreRequest.php.html#10","App\\Http\\Requests\\BatchStoreScoreRequest","34.68"],[78.84615384615384,20,"Http\/Controllers\/StudentRubricScoreController.php.html#16","App\\Http\\Controllers\\StudentRubricScoreController","23.79"],[82.22222222222221,24,"Models\/Rubric.php.html#12","App\\Models\\Rubric","27.24"],[84.21052631578947,11,"Http\/Requests\/StoreRubricRequest.php.html#11","App\\Http\\Requests\\StoreRubricRequest","11.48"],[84.61538461538461,6,"Http\/Controllers\/AssessmentColumnController.php.html#13","App\\Http\\Controllers\\AssessmentColumnController","6.13"],[86.07594936708861,24,"Models\/Gradebook.php.html#14","App\\Models\\Gradebook","25.55"],[89.79591836734694,10,"Http\/Controllers\/ScoreController.php.html#13","App\\Http\\Controllers\\ScoreController","10.11"],[90,11,"Http\/Requests\/StoreRubricCriterionRequest.php.html#11","App\\Http\\Requests\\StoreRubricCriterionRequest","11.12"],[90.625,12,"Http\/Requests\/UpdateRubricCriterionRequest.php.html#12","App\\Http\\Requests\\UpdateRubricCriterionRequest","12.12"],[92.5925925925926,10,"Http\/Requests\/UpdateRubricRequest.php.html#10","App\\Http\\Requests\\UpdateRubricRequest","10.04"],[92.85714285714286,6,"Http\/Requests\/UpdateRubricLevelRequest.php.html#9","App\\Http\\Requests\\UpdateRubricLevelRequest","6.01"],[94.1358024691358,68,"Http\/Controllers\/GradebookController.php.html#27","App\\Http\\Controllers\\GradebookController","68.93"],[94.44444444444444,4,"Http\/Controllers\/AuthController.php.html#10","App\\Http\\Controllers\\AuthController","4.00"],[96.66666666666667,7,"Http\/Requests\/StoreAssessmentColumnRequest.php.html#10","App\\Http\\Requests\\StoreAssessmentColumnRequest","7"],[96.96969696969697,8,"Http\/Requests\/UpdateAssessmentColumnRequest.php.html#9","App\\Http\\Requests\\UpdateAssessmentColumnRequest","8"],[97.5609756097561,9,"Models\/RubricCriterion.php.html#12","App\\Models\\RubricCriterion","9"],[100,0,"Http\/Controllers\/Controller.php.html#5","App\\Http\\Controllers\\Controller","0"],[100,1,"Http\/Controllers\/DashboardController.php.html#8","App\\Http\\Controllers\\DashboardController","1"],[100,3,"Http\/Requests\/StoreGradebookRequest.php.html#9","App\\Http\\Requests\\StoreGradebookRequest","3"],[100,4,"Http\/Requests\/UpdateGradebookRequest.php.html#10","App\\Http\\Requests\\UpdateGradebookRequest","4"],[100,4,"Models\/AcademicYear.php.html#12","App\\Models\\AcademicYear","4"],[100,4,"Models\/AssessmentColumn.php.html#13","App\\Models\\AssessmentColumn","4"],[100,4,"Models\/Classroom.php.html#12","App\\Models\\Classroom","4"],[100,3,"Models\/RubricLevel.php.html#12","App\\Models\\RubricLevel","3"],[100,3,"Models\/Score.php.html#11","App\\Models\\Score","3"],[100,3,"Models\/Student.php.html#12","App\\Models\\Student","3"],[100,4,"Models\/StudentRubricScore.php.html#11","App\\Models\\StudentRubricScore","4"],[100,1,"Models\/Subject.php.html#11","App\\Models\\Subject","1"],[100,2,"Models\/User.php.html#14","App\\Models\\User","2"],[100,4,"Policies\/RubricPolicy.php.html#9","App\\Policies\\RubricPolicy","4"],[100,2,"Providers\/AppServiceProvider.php.html#7","App\\Providers\\AppServiceProvider","2"]]</script>
+  <script type="application/json" id="complexity_method">[[0,1,"Http\/Controllers\/AuthController.php.html#15","App\\Http\\Controllers\\AuthController::showLoginForm","2"],[0,1,"Http\/Controllers\/GradebookController.php.html#48","App\\Http\\Controllers\\GradebookController::create","2"],[0,1,"Http\/Controllers\/GradebookController.php.html#542","App\\Http\\Controllers\\GradebookController::edit","2"],[0,1,"Http\/Controllers\/ScoreController.php.html#92","App\\Http\\Controllers\\ScoreController::batchStore","2"],[0,1,"Models\/Gradebook.php.html#35","App\\Models\\Gradebook::teacher","2"],[0,1,"Policies\/AssessmentColumnPolicy.php.html#14","App\\Policies\\AssessmentColumnPolicy::viewAny","2"],[0,1,"Policies\/GradebookPolicy.php.html#53","App\\Policies\\GradebookPolicy::restore","2"],[0,1,"Policies\/GradebookPolicy.php.html#61","App\\Policies\\GradebookPolicy::forceDelete","2"],[22.22222222222222,3,"Http\/Controllers\/RubricController.php.html#117","App\\Http\\Controllers\\RubricController::destroy","7.23"],[33.33333333333333,1,"Http\/Controllers\/AssessmentColumnController.php.html#18","App\\Http\\Controllers\\AssessmentColumnController::create","1.30"],[50,2,"Http\/Controllers\/RubricController.php.html#53","App\\Http\\Controllers\\RubricController::store","2.50"],[50,12,"Http\/Requests\/BatchStoreScoreRequest.php.html#41","App\\Http\\Requests\\BatchStoreScoreRequest::normalizedScores","30.00"],[53.84615384615385,4,"Http\/Controllers\/RubricCriterionController.php.html#20","App\\Http\\Controllers\\RubricCriterionController::store","5.57"],[63.63636363636363,2,"Http\/Controllers\/GradebookController.php.html#62","App\\Http\\Controllers\\GradebookController::store","2.19"],[63.829787234042556,23,"Http\/Requests\/StoreStudentRubricScoreRequest.php.html#42","App\\Http\\Requests\\StoreStudentRubricScoreRequest::withValidator","48.03"],[66.66666666666666,1,"Http\/Controllers\/AssessmentColumnController.php.html#50","App\\Http\\Controllers\\AssessmentColumnController::edit","1.04"],[66.66666666666666,4,"Http\/Controllers\/RubricCriterionController.php.html#51","App\\Http\\Controllers\\RubricCriterionController::update","4.59"],[66.66666666666666,2,"Policies\/AssessmentColumnPolicy.php.html#30","App\\Policies\\AssessmentColumnPolicy::create","2.15"],[68.75,5,"Http\/Controllers\/RubricLevelController.php.html#20","App\\Http\\Controllers\\RubricLevelController::update","5.76"],[71.42857142857143,4,"Http\/Controllers\/RubricCriterionController.php.html#82","App\\Http\\Controllers\\RubricCriterionController::destroy","4.37"],[71.42857142857143,5,"Http\/Requests\/StoreRubricRequest.php.html#42","App\\Http\\Requests\\StoreRubricRequest::withValidator","5.58"],[73.33333333333333,2,"Models\/Rubric.php.html#181","App\\Models\\Rubric::syncStudentScore","2.08"],[75,4,"Http\/Requests\/StoreRubricCriterionRequest.php.html#16","App\\Http\\Requests\\StoreRubricCriterionRequest::authorize","4.25"],[75,4,"Http\/Requests\/StoreRubricRequest.php.html#16","App\\Http\\Requests\\StoreRubricRequest::authorize","4.25"],[75,4,"Http\/Requests\/StoreStudentRubricScoreRequest.php.html#17","App\\Http\\Requests\\StoreStudentRubricScoreRequest::authorize","4.25"],[75,4,"Http\/Requests\/UpdateRubricCriterionRequest.php.html#17","App\\Http\\Requests\\UpdateRubricCriterionRequest::authorize","4.25"],[75,4,"Http\/Requests\/UpdateRubricLevelRequest.php.html#14","App\\Http\\Requests\\UpdateRubricLevelRequest::authorize","4.25"],[75,4,"Http\/Requests\/UpdateRubricRequest.php.html#15","App\\Http\\Requests\\UpdateRubricRequest::authorize","4.25"],[78.26086956521739,7,"Http\/Controllers\/RubricController.php.html#74","App\\Http\\Controllers\\RubricController::update","7.50"],[78.84615384615384,20,"Http\/Controllers\/StudentRubricScoreController.php.html#21","App\\Http\\Controllers\\StudentRubricScoreController::store","23.79"],[82.6086956521739,17,"Models\/Rubric.php.html#82","App\\Models\\Rubric::getStudentScoreSummary","18.52"],[83.63636363636363,10,"Models\/Gradebook.php.html#150","App\\Models\\Gradebook::getStudentGradeSummary","10.44"],[85.71428571428571,2,"Models\/Gradebook.php.html#113","App\\Models\\Gradebook::calculateStudentAverage","2.01"],[86.66666666666667,5,"Http\/Requests\/StoreRubricCriterionRequest.php.html#44","App\\Http\\Requests\\StoreRubricCriterionRequest::withValidator","5.06"],[87.5,2,"Http\/Controllers\/AssessmentColumnController.php.html#30","App\\Http\\Controllers\\AssessmentColumnController::store","2.01"],[88.23529411764706,6,"Http\/Requests\/UpdateRubricCriterionRequest.php.html#45","App\\Http\\Requests\\UpdateRubricCriterionRequest::withValidator","6.06"],[88.57142857142857,9,"Http\/Requests\/BatchStoreScoreRequest.php.html#95","App\\Http\\Requests\\BatchStoreScoreRequest::withValidator","9.12"],[88.88888888888889,4,"Http\/Requests\/UpdateRubricRequest.php.html#45","App\\Http\\Requests\\UpdateRubricRequest::withValidator","4.02"],[91.66666666666666,9,"Http\/Controllers\/ScoreController.php.html#18","App\\Http\\Controllers\\ScoreController::store","9.05"],[92.3076923076923,3,"Http\/Requests\/StoreAssessmentColumnRequest.php.html#59","App\\Http\\Requests\\StoreAssessmentColumnRequest::withValidator","3.00"],[93.75,4,"Http\/Requests\/UpdateAssessmentColumnRequest.php.html#58","App\\Http\\Requests\\UpdateAssessmentColumnRequest::withValidator","4.00"],[94.44444444444444,2,"Http\/Controllers\/RubricController.php.html#21","App\\Http\\Controllers\\RubricController::show","2.00"],[95.06172839506173,19,"Http\/Controllers\/GradebookController.php.html#346","App\\Http\\Controllers\\GradebookController::exportCsv","19"],[96.66666666666667,3,"Models\/RubricCriterion.php.html#71","App\\Models\\RubricCriterion::createDefaultLevels","3"],[99.19354838709677,18,"Http\/Controllers\/GradebookController.php.html#159","App\\Http\\Controllers\\GradebookController::exportXlsx","18"],[100,1,"Http\/Controllers\/AssessmentColumnController.php.html#62","App\\Http\\Controllers\\AssessmentColumnController::update","1"],[100,1,"Http\/Controllers\/AssessmentColumnController.php.html#78","App\\Http\\Controllers\\AssessmentColumnController::destroy","1"],[100,2,"Http\/Controllers\/AuthController.php.html#23","App\\Http\\Controllers\\AuthController::login","2"],[100,1,"Http\/Controllers\/AuthController.php.html#48","App\\Http\\Controllers\\AuthController::logout","1"],[100,1,"Http\/Controllers\/DashboardController.php.html#13","App\\Http\\Controllers\\DashboardController::index","1"],[100,1,"Http\/Controllers\/GradebookController.php.html#32","App\\Http\\Controllers\\GradebookController::index","1"],[100,13,"Http\/Controllers\/GradebookController.php.html#86","App\\Http\\Controllers\\GradebookController::export","13"],[100,11,"Http\/Controllers\/GradebookController.php.html#480","App\\Http\\Controllers\\GradebookController::show","11"],[100,1,"Http\/Controllers\/GradebookController.php.html#556","App\\Http\\Controllers\\GradebookController::update","1"],[100,1,"Http\/Controllers\/GradebookController.php.html#570","App\\Http\\Controllers\\GradebookController::destroy","1"],[100,2,"Http\/Requests\/BatchStoreScoreRequest.php.html#15","App\\Http\\Requests\\BatchStoreScoreRequest::authorize","2"],[100,1,"Http\/Requests\/BatchStoreScoreRequest.php.html#28","App\\Http\\Requests\\BatchStoreScoreRequest::rules","1"],[100,2,"Http\/Requests\/StoreAssessmentColumnRequest.php.html#15","App\\Http\\Requests\\StoreAssessmentColumnRequest::authorize","2"],[100,1,"Http\/Requests\/StoreAssessmentColumnRequest.php.html#28","App\\Http\\Requests\\StoreAssessmentColumnRequest::rules","1"],[100,1,"Http\/Requests\/StoreAssessmentColumnRequest.php.html#44","App\\Http\\Requests\\StoreAssessmentColumnRequest::messages","1"],[100,1,"Http\/Requests\/StoreGradebookRequest.php.html#14","App\\Http\\Requests\\StoreGradebookRequest::authorize","1"],[100,1,"Http\/Requests\/StoreGradebookRequest.php.html#24","App\\Http\\Requests\\StoreGradebookRequest::rules","1"],[100,1,"Http\/Requests\/StoreGradebookRequest.php.html#50","App\\Http\\Requests\\StoreGradebookRequest::messages","1"],[100,1,"Http\/Requests\/StoreRubricCriterionRequest.php.html#31","App\\Http\\Requests\\StoreRubricCriterionRequest::rules","1"],[100,1,"Http\/Requests\/StoreRubricCriterionRequest.php.html#74","App\\Http\\Requests\\StoreRubricCriterionRequest::attributes","1"],[100,1,"Http\/Requests\/StoreRubricRequest.php.html#31","App\\Http\\Requests\\StoreRubricRequest::rules","1"],[100,1,"Http\/Requests\/StoreRubricRequest.php.html#61","App\\Http\\Requests\\StoreRubricRequest::attributes","1"],[100,1,"Http\/Requests\/StoreStudentRubricScoreRequest.php.html#32","App\\Http\\Requests\\StoreStudentRubricScoreRequest::rules","1"],[100,2,"Http\/Requests\/UpdateAssessmentColumnRequest.php.html#14","App\\Http\\Requests\\UpdateAssessmentColumnRequest::authorize","2"],[100,1,"Http\/Requests\/UpdateAssessmentColumnRequest.php.html#27","App\\Http\\Requests\\UpdateAssessmentColumnRequest::rules","1"],[100,1,"Http\/Requests\/UpdateAssessmentColumnRequest.php.html#43","App\\Http\\Requests\\UpdateAssessmentColumnRequest::messages","1"],[100,2,"Http\/Requests\/UpdateGradebookRequest.php.html#15","App\\Http\\Requests\\UpdateGradebookRequest::authorize","2"],[100,1,"Http\/Requests\/UpdateGradebookRequest.php.html#28","App\\Http\\Requests\\UpdateGradebookRequest::rules","1"],[100,1,"Http\/Requests\/UpdateGradebookRequest.php.html#57","App\\Http\\Requests\\UpdateGradebookRequest::messages","1"],[100,1,"Http\/Requests\/UpdateRubricCriterionRequest.php.html#32","App\\Http\\Requests\\UpdateRubricCriterionRequest::rules","1"],[100,1,"Http\/Requests\/UpdateRubricCriterionRequest.php.html#78","App\\Http\\Requests\\UpdateRubricCriterionRequest::attributes","1"],[100,1,"Http\/Requests\/UpdateRubricLevelRequest.php.html#29","App\\Http\\Requests\\UpdateRubricLevelRequest::rules","1"],[100,1,"Http\/Requests\/UpdateRubricLevelRequest.php.html#43","App\\Http\\Requests\\UpdateRubricLevelRequest::attributes","1"],[100,1,"Http\/Requests\/UpdateRubricRequest.php.html#30","App\\Http\\Requests\\UpdateRubricRequest::rules","1"],[100,1,"Http\/Requests\/UpdateRubricRequest.php.html#66","App\\Http\\Requests\\UpdateRubricRequest::attributes","1"],[100,1,"Models\/AcademicYear.php.html#23","App\\Models\\AcademicYear::casts","1"],[100,1,"Models\/AcademicYear.php.html#35","App\\Models\\AcademicYear::gradebooks","1"],[100,1,"Models\/AcademicYear.php.html#45","App\\Models\\AcademicYear::classrooms","1"],[100,1,"Models\/AcademicYear.php.html#57","App\\Models\\AcademicYear::students","1"],[100,1,"Models\/AssessmentColumn.php.html#24","App\\Models\\AssessmentColumn::casts","1"],[100,1,"Models\/AssessmentColumn.php.html#38","App\\Models\\AssessmentColumn::gradebook","1"],[100,1,"Models\/AssessmentColumn.php.html#48","App\\Models\\AssessmentColumn::scores","1"],[100,1,"Models\/AssessmentColumn.php.html#58","App\\Models\\AssessmentColumn::rubric","1"],[100,1,"Models\/Classroom.php.html#23","App\\Models\\Classroom::casts","1"],[100,1,"Models\/Classroom.php.html#35","App\\Models\\Classroom::students","1"],[100,1,"Models\/Classroom.php.html#47","App\\Models\\Classroom::academicYears","1"],[100,1,"Models\/Classroom.php.html#59","App\\Models\\Classroom::gradebooks","1"],[100,1,"Models\/Gradebook.php.html#25","App\\Models\\Gradebook::user","1"],[100,1,"Models\/Gradebook.php.html#45","App\\Models\\Gradebook::classroom","1"],[100,1,"Models\/Gradebook.php.html#55","App\\Models\\Gradebook::subject","1"],[100,1,"Models\/Gradebook.php.html#65","App\\Models\\Gradebook::academicYear","1"],[100,1,"Models\/Gradebook.php.html#75","App\\Models\\Gradebook::assessmentColumns","1"],[100,1,"Models\/Gradebook.php.html#85","App\\Models\\Gradebook::scores","1"],[100,4,"Models\/Gradebook.php.html#95","App\\Models\\Gradebook::getEnrolledStudents","4"],[100,1,"Models\/Gradebook.php.html#130","App\\Models\\Gradebook::calculateStudentFinalGrade","1"],[100,1,"Models\/Rubric.php.html#23","App\\Models\\Rubric::assessmentColumn","1"],[100,1,"Models\/Rubric.php.html#33","App\\Models\\Rubric::criteria","1"],[100,1,"Models\/Rubric.php.html#41","App\\Models\\Rubric::totalWeight","1"],[100,1,"Models\/Rubric.php.html#49","App\\Models\\Rubric::isConfigured","1"],[100,1,"Models\/Rubric.php.html#61","App\\Models\\Rubric::calculateStudentScore","1"],[100,1,"Models\/RubricCriterion.php.html#23","App\\Models\\RubricCriterion::casts","1"],[100,1,"Models\/RubricCriterion.php.html#36","App\\Models\\RubricCriterion::rubric","1"],[100,1,"Models\/RubricCriterion.php.html#46","App\\Models\\RubricCriterion::levels","1"],[100,2,"Models\/RubricCriterion.php.html#59","App\\Models\\RubricCriterion::booted","2"],[100,1,"Models\/RubricCriterion.php.html#114","App\\Models\\RubricCriterion::studentScores","1"],[100,1,"Models\/RubricLevel.php.html#23","App\\Models\\RubricLevel::casts","1"],[100,1,"Models\/RubricLevel.php.html#36","App\\Models\\RubricLevel::criterion","1"],[100,1,"Models\/RubricLevel.php.html#46","App\\Models\\RubricLevel::studentScores","1"],[100,1,"Models\/Score.php.html#22","App\\Models\\Score::casts","1"],[100,1,"Models\/Score.php.html#34","App\\Models\\Score::assessmentColumn","1"],[100,1,"Models\/Score.php.html#44","App\\Models\\Score::student","1"],[100,1,"Models\/Student.php.html#23","App\\Models\\Student::classrooms","1"],[100,1,"Models\/Student.php.html#35","App\\Models\\Student::academicYears","1"],[100,1,"Models\/Student.php.html#47","App\\Models\\Student::scores","1"],[100,1,"Models\/StudentRubricScore.php.html#22","App\\Models\\StudentRubricScore::casts","1"],[100,1,"Models\/StudentRubricScore.php.html#34","App\\Models\\StudentRubricScore::student","1"],[100,1,"Models\/StudentRubricScore.php.html#44","App\\Models\\StudentRubricScore::criterion","1"],[100,1,"Models\/StudentRubricScore.php.html#54","App\\Models\\StudentRubricScore::level","1"],[100,1,"Models\/Subject.php.html#22","App\\Models\\Subject::gradebooks","1"],[100,1,"Models\/User.php.html#26","App\\Models\\User::casts","1"],[100,1,"Models\/User.php.html#39","App\\Models\\User::gradebooks","1"],[100,1,"Policies\/AssessmentColumnPolicy.php.html#22","App\\Policies\\AssessmentColumnPolicy::view","1"],[100,1,"Policies\/AssessmentColumnPolicy.php.html#42","App\\Policies\\AssessmentColumnPolicy::update","1"],[100,1,"Policies\/AssessmentColumnPolicy.php.html#50","App\\Policies\\AssessmentColumnPolicy::delete","1"],[100,1,"Policies\/GradebookPolicy.php.html#13","App\\Policies\\GradebookPolicy::viewAny","1"],[100,1,"Policies\/GradebookPolicy.php.html#21","App\\Policies\\GradebookPolicy::view","1"],[100,1,"Policies\/GradebookPolicy.php.html#29","App\\Policies\\GradebookPolicy::create","1"],[100,1,"Policies\/GradebookPolicy.php.html#37","App\\Policies\\GradebookPolicy::update","1"],[100,1,"Policies\/GradebookPolicy.php.html#45","App\\Policies\\GradebookPolicy::delete","1"],[100,1,"Policies\/RubricPolicy.php.html#14","App\\Policies\\RubricPolicy::view","1"],[100,1,"Policies\/RubricPolicy.php.html#22","App\\Policies\\RubricPolicy::create","1"],[100,1,"Policies\/RubricPolicy.php.html#30","App\\Policies\\RubricPolicy::update","1"],[100,1,"Policies\/RubricPolicy.php.html#38","App\\Policies\\RubricPolicy::delete","1"],[100,1,"Providers\/AppServiceProvider.php.html#12","App\\Providers\\AppServiceProvider::register","1"],[100,1,"Providers\/AppServiceProvider.php.html#20","App\\Providers\\AppServiceProvider::boot","1"]]</script>
+  <script type="text/javascript" defer>
+  const barLabels = [
+    '0%',
+    '0-10%',
+    '10-20%',
+    '20-30%',
+    '30-40%',
+    '40-50%',
+    '50-60%',
+    '60-70%',
+    '70-80%',
+    '80-90%',
+    '90-100%',
+    '100%'
+  ];
+  const barConfig = (name, fullName, values) => ({
+    axis: {
+      x: {
+        type: "category",
+        categories: barLabels,
+      },
+      y: {
+        label: {
+          text: `#${name}`,
+          position: 'outer-top',
+        },
+      },
+    },
+    bindto: `#${name}CoverageDistribution`,
+    data: {
+      columns: [
+        [fullName].concat(values),
+      ],
+      colors: {
+        [fullName]: "rgba(69, 114, 167, 0.75)",
+      },
+      type: "bar",
+    },
+    bar: {
+      width: {
+        ratio: 0.9,
+      },
+    },
+    grid: {
+      focus: {
+        show: false,
+      },
+      x: {
+        show: true,
+      },
+      y: {
+        show: true,
+      },
+    },
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      contents: function (data) {
+        return `<table class="bb-tooltip"><tbody>
+            <tr><th colspan="2">Coverage ${barLabels[data[0].x]}</th></tr>
+            <tr><td class="value">${data[0].value} ${name}</td></tr>
+          </tbody></table>`;
+      },
+      grouped: false,
+    },
+  });
+  bb.generate(
+    barConfig('classes', "Class Coverage", [0,0,0,0,0,0,0,3,5,5,9,15])
+  );
+  bb.generate(
+    barConfig('methods', "Method Coverage", [8,0,0,1,1,0,3,6,11,8,7,95])
+  );
+
+  const scatterConfig = (name, complexityData) => ({
+    axis: {
+      x: {
+        label: {
+          text: 'Code Coverage (in percent)',
+          position: 'outer-right',
+        },
+        tick: {
+          values: [0, 20, 40, 60, 80, 100],
+        },
+      },
+      y: {
+        label: {
+          text: 'Cyclomatic Complexity',
+          position: 'outer-top',
+        },
+        min: 0,
+        padding: {
+          bottom: 0,
+          top: 5,
+        },
+      },
+    },
+    bindto: `#${name}Complexity`,
+    data: {
+      columns: [
+        ["complexity_x"].concat(complexityData.map(d => d[0])),
+        ["complexity"].concat(complexityData.map(d => d[1])),
+      ],
+      onclick: function(data, element) {
+        window.location = complexityData[data.index][2];
+      },
+      type: "scatter",
+      xs: {
+        "complexity": "complexity_x",
+      },
+    },
+    grid: {
+      focus: {
+        show: true,
+        y: true,
+      },
+      x: {
+        show: true,
+      },
+      y: {
+        show: true,
+      },
+    },
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      contents: function (data) {
+        const coverage = Math.round(data[0].x);
+        const complexity = data[0].value;
+        const targetName = complexityData[data[0].index][3];
+        const crap = complexityData[data[0].index][4];
+        return `<table class="bb-tooltip"><tbody>
+            <tr><th colspan="2">${targetName}</th></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Coverage</td><td class="name">${coverage}%</td></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Complexity</td><td class="value">${complexity}</td></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Crap</td><td class="value">${crap}</td></tr>
+          </tbody></table>`;
+      },
+      grouped: false,
+    },
+  });
+  const classComplexityData = JSON.parse(document.getElementById('complexity_class').textContent);
+  bb.generate(
+    scatterConfig("class", classComplexityData)
+  );
+  const methodComplexityData = JSON.parse(document.getElementById('complexity_method').textContent);
+  bb.generate(
+    scatterConfig("method", methodComplexityData),
+  );
+  </script>
+ </body>
+</html>

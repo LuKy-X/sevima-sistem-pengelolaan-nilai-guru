@@ -16,7 +16,7 @@
             <div class="max-w-2xl">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-bold uppercase tracking-wider mb-3">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                    Portal Buku Nilai Digital
+                    NilaiKu: Buku Nilai Digital Fleksibel Guru
                 </span>
                 <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight">
                     Selamat Datang, {{ $user->name }}! 👋

@@ -476,4 +476,59 @@ class RubricBackendLogicTest extends TestCase
             ],
         ])->assertStatus(403);
     }
+
+    /**
+     * 14. Teacher can update and delete rubric criterion.
+     */
+    public function test_teacher_can_update_and_delete_rubric_criterion(): void
+    {
+        $teacher = User::factory()->create();
+        $gradebook = Gradebook::factory()->create(['user_id' => $teacher->id]);
+        $column = AssessmentColumn::factory()->create(['gradebook_id' => $gradebook->id]);
+        $rubric = Rubric::factory()->create(['assessment_column_id' => $column->id]);
+
+        $c1 = RubricCriterion::create([
+            'rubric_id' => $rubric->id,
+            'name' => 'Kerapian Kode',
+            'weight' => 40.00,
+        ]);
+
+        $c2 = RubricCriterion::create([
+            'rubric_id' => $rubric->id,
+            'name' => 'Fungsionalitas',
+            'weight' => 50.00,
+        ]);
+
+        // Update criterion c1 to 45% (total 45 + 50 = 95 <= 100)
+        $response = $this->actingAs($teacher)->put(
+            route('gradebooks.columns.rubric.criteria.update', [$gradebook, $column, $rubric, $c1]),
+            [
+                'name' => 'Kerapian & Dokumentasi Kode',
+                'weight' => 45.00,
+            ]
+        );
+        $response->assertSessionHas('status', 'Kriteria rubrik berhasil diperbarui.');
+        $this->assertDatabaseHas('rubric_criteria', [
+            'id' => $c1->id,
+            'name' => 'Kerapian & Dokumentasi Kode',
+            'weight' => 45.00,
+        ]);
+
+        // Attempting to update c1 to 60% (total 60 + 50 = 110 > 100) must fail validation
+        $failResponse = $this->actingAs($teacher)->put(
+            route('gradebooks.columns.rubric.criteria.update', [$gradebook, $column, $rubric, $c1]),
+            [
+                'name' => 'Kerapian & Dokumentasi Kode',
+                'weight' => 60.00,
+            ]
+        );
+        $failResponse->assertSessionHasErrors(['weight']);
+
+        // Delete criterion c2
+        $deleteResponse = $this->actingAs($teacher)->delete(
+            route('gradebooks.columns.rubric.criteria.destroy', [$gradebook, $column, $rubric, $c2])
+        );
+        $deleteResponse->assertSessionHas('status', 'Kriteria rubrik berhasil dihapus.');
+        $this->assertDatabaseMissing('rubric_criteria', ['id' => $c2->id]);
+    }
 }

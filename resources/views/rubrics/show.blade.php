@@ -277,18 +277,6 @@
                                 </tr>
                             </tfoot>
                         </table>
-
-                        <!-- Circular Plus (+) Add Button on Right Edge (Matches Reference) -->
-                        <button 
-                            type="button" 
-                            onclick="openAddCriterionModal()"
-                            class="absolute -right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-[#52A0FD] hover:bg-[#1E78F6] text-white flex items-center justify-center shadow-md transition-all transform hover:scale-110 active:scale-95 cursor-pointer z-10"
-                            title="Tambah Kriteria Baru"
-                        >
-                            <svg class="w-5 h-5 font-extrabold" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"></path>
-                            </svg>
-                        </button>
                     </div>
 
                     <!-- Action Bar: Add Criterion Button & Primary "Simpan Rubrik" Button (Matches Reference) -->

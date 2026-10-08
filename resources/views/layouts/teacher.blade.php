@@ -13,8 +13,8 @@
                     </svg>
                 </div>
                 <div class="overflow-hidden">
-                    <span class="text-sm font-extrabold text-slate-900 block truncate leading-tight">Buku Nilai Guru</span>
-                    <span class="text-[11px] font-semibold text-blue-600 uppercase tracking-wider">Portal Pendidik</span>
+                    <span class="text-base font-black text-slate-900 block truncate leading-tight tracking-tight">Nilai<span class="text-[#1363DF]">Ku</span></span>
+                    <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider block">Buku Nilai Digital Fleksibel</span>
                 </div>
             </div>
 

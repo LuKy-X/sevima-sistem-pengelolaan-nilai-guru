@@ -112,7 +112,7 @@ class ModelAndPolicyUnitTest extends TestCase
         $column = AssessmentColumn::factory()->create(['gradebook_id' => $gradebook->id]);
         $rubric = Rubric::factory()->create(['assessment_column_id' => $column->id]);
 
-        $policy = new RubricPolicy();
+        $policy = new RubricPolicy;
 
         // View
         $this->assertTrue($policy->view($owner, $rubric));
@@ -142,7 +142,7 @@ class ModelAndPolicyUnitTest extends TestCase
         $gradebook = Gradebook::factory()->create(['user_id' => $owner->id]);
         $column = AssessmentColumn::factory()->create(['gradebook_id' => $gradebook->id]);
 
-        $policy = new AssessmentColumnPolicy();
+        $policy = new AssessmentColumnPolicy;
 
         $this->assertTrue($policy->view($owner, $column));
         $this->assertFalse($policy->view($otherUser, $column));
@@ -167,7 +167,7 @@ class ModelAndPolicyUnitTest extends TestCase
 
         $gradebook = Gradebook::factory()->create(['user_id' => $owner->id]);
 
-        $policy = new GradebookPolicy();
+        $policy = new GradebookPolicy;
 
         $this->assertTrue($policy->viewAny($owner));
 

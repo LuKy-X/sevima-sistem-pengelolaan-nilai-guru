@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for C:\laragon\www\sistem-pengelolaan-nilai-guru\app\Models</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="../_css/bootstrap.min.css?v=12.5.7" rel="stylesheet" type="text/css">
+  <link href="../_css/billboard.min.css?v=12.5.7" rel="stylesheet" type="text/css">
+  <link href="../_css/style.css?v=12.5.7" rel="stylesheet" type="text/css">
+  <link href="../_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="../index.html">C:\laragon\www\sistem-pengelolaan-nilai-guru\app</a></li>
+         <li class="breadcrumb-item"><a href="index.html">Models</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classesCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Rubric.php.html#12">App\Models\Rubric</a></td><td class="text-right">82%</td></tr>
+       <tr><td><a href="Gradebook.php.html#14">App\Models\Gradebook</a></td><td class="text-right">86%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+         <th class="text-right">Complexity</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Rubric.php.html#12">App\Models\Rubric</a></td><td class="text-right">82.2%</td><td class="text-right">24</td><td class="text-right">27</td></tr>
+       <tr><td><a href="Gradebook.php.html#14">App\Models\Gradebook</a></td><td class="text-right">86.1%</td><td class="text-right">24</td><td class="text-right">25</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2 style="margin-top: 3rem;">Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodsCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Gradebook.php.html#35"><abbr title="App\Models\Gradebook::teacher">teacher</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Rubric.php.html#181"><abbr title="App\Models\Rubric::syncStudentScore">syncStudentScore</abbr></a></td><td class="text-right">73%</td></tr>
+       <tr><td><a href="Rubric.php.html#82"><abbr title="App\Models\Rubric::getStudentScoreSummary">getStudentScoreSummary</abbr></a></td><td class="text-right">82%</td></tr>
+       <tr><td><a href="Gradebook.php.html#150"><abbr title="App\Models\Gradebook::getStudentGradeSummary">getStudentGradeSummary</abbr></a></td><td class="text-right">83%</td></tr>
+       <tr><td><a href="Gradebook.php.html#113"><abbr title="App\Models\Gradebook::calculateStudentAverage">calculateStudentAverage</abbr></a></td><td class="text-right">85%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3 style="margin-top: 2rem;">Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+         <th class="text-right">Complexity</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Rubric.php.html#82"><abbr title="App\Models\Rubric::getStudentScoreSummary">getStudentScoreSummary</abbr></a></td><td class="text-right">82.6%</td><td class="text-right">17</td><td class="text-right">18</td></tr>
+       <tr><td><a href="Gradebook.php.html#150"><abbr title="App\Models\Gradebook::getStudentGradeSummary">getStudentGradeSummary</abbr></a></td><td class="text-right">83.6%</td><td class="text-right">10</td><td class="text-right">10</td></tr>
+       <tr><td><a href="Gradebook.php.html#113"><abbr title="App\Models\Gradebook::calculateStudentAverage">calculateStudentAverage</abbr></a></td><td class="text-right">85.7%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+       <tr><td><a href="Rubric.php.html#181"><abbr title="App\Models\Rubric::syncStudentScore">syncStudentScore</abbr></a></td><td class="text-right">73.3%</td><td class="text-right">2</td><td class="text-right">2</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 12.5.7</a> using <a href="https://www.php.net/" target="_top">PHP 8.4.16</a> and <a href="https://phpunit.de/">PHPUnit 12.5.36</a> at Sat Sep 26 8:30:20 UTC 2026.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="../_js/billboard.pkgd.min.js?v=12.5.7" type="text/javascript"></script>
+  <script type="application/json" id="complexity_class">[[82.22222222222221,24,"Rubric.php.html#12","App\\Models\\Rubric","27.24"],[86.07594936708861,24,"Gradebook.php.html#14","App\\Models\\Gradebook","25.55"],[97.5609756097561,9,"RubricCriterion.php.html#12","App\\Models\\RubricCriterion","9"],[100,4,"AcademicYear.php.html#12","App\\Models\\AcademicYear","4"],[100,4,"AssessmentColumn.php.html#13","App\\Models\\AssessmentColumn","4"],[100,4,"Classroom.php.html#12","App\\Models\\Classroom","4"],[100,3,"RubricLevel.php.html#12","App\\Models\\RubricLevel","3"],[100,3,"Score.php.html#11","App\\Models\\Score","3"],[100,3,"Student.php.html#12","App\\Models\\Student","3"],[100,4,"StudentRubricScore.php.html#11","App\\Models\\StudentRubricScore","4"],[100,1,"Subject.php.html#11","App\\Models\\Subject","1"],[100,2,"User.php.html#14","App\\Models\\User","2"]]</script>
+  <script type="application/json" id="complexity_method">[[0,1,"Gradebook.php.html#35","App\\Models\\Gradebook::teacher","2"],[73.33333333333333,2,"Rubric.php.html#181","App\\Models\\Rubric::syncStudentScore","2.08"],[82.6086956521739,17,"Rubric.php.html#82","App\\Models\\Rubric::getStudentScoreSummary","18.52"],[83.63636363636363,10,"Gradebook.php.html#150","App\\Models\\Gradebook::getStudentGradeSummary","10.44"],[85.71428571428571,2,"Gradebook.php.html#113","App\\Models\\Gradebook::calculateStudentAverage","2.01"],[96.66666666666667,3,"RubricCriterion.php.html#71","App\\Models\\RubricCriterion::createDefaultLevels","3"],[100,1,"AcademicYear.php.html#23","App\\Models\\AcademicYear::casts","1"],[100,1,"AcademicYear.php.html#35","App\\Models\\AcademicYear::gradebooks","1"],[100,1,"AcademicYear.php.html#45","App\\Models\\AcademicYear::classrooms","1"],[100,1,"AcademicYear.php.html#57","App\\Models\\AcademicYear::students","1"],[100,1,"AssessmentColumn.php.html#24","App\\Models\\AssessmentColumn::casts","1"],[100,1,"AssessmentColumn.php.html#38","App\\Models\\AssessmentColumn::gradebook","1"],[100,1,"AssessmentColumn.php.html#48","App\\Models\\AssessmentColumn::scores","1"],[100,1,"AssessmentColumn.php.html#58","App\\Models\\AssessmentColumn::rubric","1"],[100,1,"Classroom.php.html#23","App\\Models\\Classroom::casts","1"],[100,1,"Classroom.php.html#35","App\\Models\\Classroom::students","1"],[100,1,"Classroom.php.html#47","App\\Models\\Classroom::academicYears","1"],[100,1,"Classroom.php.html#59","App\\Models\\Classroom::gradebooks","1"],[100,1,"Gradebook.php.html#25","App\\Models\\Gradebook::user","1"],[100,1,"Gradebook.php.html#45","App\\Models\\Gradebook::classroom","1"],[100,1,"Gradebook.php.html#55","App\\Models\\Gradebook::subject","1"],[100,1,"Gradebook.php.html#65","App\\Models\\Gradebook::academicYear","1"],[100,1,"Gradebook.php.html#75","App\\Models\\Gradebook::assessmentColumns","1"],[100,1,"Gradebook.php.html#85","App\\Models\\Gradebook::scores","1"],[100,4,"Gradebook.php.html#95","App\\Models\\Gradebook::getEnrolledStudents","4"],[100,1,"Gradebook.php.html#130","App\\Models\\Gradebook::calculateStudentFinalGrade","1"],[100,1,"Rubric.php.html#23","App\\Models\\Rubric::assessmentColumn","1"],[100,1,"Rubric.php.html#33","App\\Models\\Rubric::criteria","1"],[100,1,"Rubric.php.html#41","App\\Models\\Rubric::totalWeight","1"],[100,1,"Rubric.php.html#49","App\\Models\\Rubric::isConfigured","1"],[100,1,"Rubric.php.html#61","App\\Models\\Rubric::calculateStudentScore","1"],[100,1,"RubricCriterion.php.html#23","App\\Models\\RubricCriterion::casts","1"],[100,1,"RubricCriterion.php.html#36","App\\Models\\RubricCriterion::rubric","1"],[100,1,"RubricCriterion.php.html#46","App\\Models\\RubricCriterion::levels","1"],[100,2,"RubricCriterion.php.html#59","App\\Models\\RubricCriterion::booted","2"],[100,1,"RubricCriterion.php.html#114","App\\Models\\RubricCriterion::studentScores","1"],[100,1,"RubricLevel.php.html#23","App\\Models\\RubricLevel::casts","1"],[100,1,"RubricLevel.php.html#36","App\\Models\\RubricLevel::criterion","1"],[100,1,"RubricLevel.php.html#46","App\\Models\\RubricLevel::studentScores","1"],[100,1,"Score.php.html#22","App\\Models\\Score::casts","1"],[100,1,"Score.php.html#34","App\\Models\\Score::assessmentColumn","1"],[100,1,"Score.php.html#44","App\\Models\\Score::student","1"],[100,1,"Student.php.html#23","App\\Models\\Student::classrooms","1"],[100,1,"Student.php.html#35","App\\Models\\Student::academicYears","1"],[100,1,"Student.php.html#47","App\\Models\\Student::scores","1"],[100,1,"StudentRubricScore.php.html#22","App\\Models\\StudentRubricScore::casts","1"],[100,1,"StudentRubricScore.php.html#34","App\\Models\\StudentRubricScore::student","1"],[100,1,"StudentRubricScore.php.html#44","App\\Models\\StudentRubricScore::criterion","1"],[100,1,"StudentRubricScore.php.html#54","App\\Models\\StudentRubricScore::level","1"],[100,1,"Subject.php.html#22","App\\Models\\Subject::gradebooks","1"],[100,1,"User.php.html#26","App\\Models\\User::casts","1"],[100,1,"User.php.html#39","App\\Models\\User::gradebooks","1"]]</script>
+  <script type="text/javascript" defer>
+  const barLabels = [
+    '0%',
+    '0-10%',
+    '10-20%',
+    '20-30%',
+    '30-40%',
+    '40-50%',
+    '50-60%',
+    '60-70%',
+    '70-80%',
+    '80-90%',
+    '90-100%',
+    '100%'
+  ];
+  const barConfig = (name, fullName, values) => ({
+    axis: {
+      x: {
+        type: "category",
+        categories: barLabels,
+      },
+      y: {
+        label: {
+          text: `#${name}`,
+          position: 'outer-top',
+        },
+      },
+    },
+    bindto: `#${name}CoverageDistribution`,
+    data: {
+      columns: [
+        [fullName].concat(values),
+      ],
+      colors: {
+        [fullName]: "rgba(69, 114, 167, 0.75)",
+      },
+      type: "bar",
+    },
+    bar: {
+      width: {
+        ratio: 0.9,
+      },
+    },
+    grid: {
+      focus: {
+        show: false,
+      },
+      x: {
+        show: true,
+      },
+      y: {
+        show: true,
+      },
+    },
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      contents: function (data) {
+        return `<table class="bb-tooltip"><tbody>
+            <tr><th colspan="2">Coverage ${barLabels[data[0].x]}</th></tr>
+            <tr><td class="value">${data[0].value} ${name}</td></tr>
+          </tbody></table>`;
+      },
+      grouped: false,
+    },
+  });
+  bb.generate(
+    barConfig('classes', "Class Coverage", [0,0,0,0,0,0,0,0,0,2,1,9])
+  );
+  bb.generate(
+    barConfig('methods', "Method Coverage", [1,0,0,0,0,0,0,0,1,3,1,46])
+  );
+
+  const scatterConfig = (name, complexityData) => ({
+    axis: {
+      x: {
+        label: {
+          text: 'Code Coverage (in percent)',
+          position: 'outer-right',
+        },
+        tick: {
+          values: [0, 20, 40, 60, 80, 100],
+        },
+      },
+      y: {
+        label: {
+          text: 'Cyclomatic Complexity',
+          position: 'outer-top',
+        },
+        min: 0,
+        padding: {
+          bottom: 0,
+          top: 5,
+        },
+      },
+    },
+    bindto: `#${name}Complexity`,
+    data: {
+      columns: [
+        ["complexity_x"].concat(complexityData.map(d => d[0])),
+        ["complexity"].concat(complexityData.map(d => d[1])),
+      ],
+      onclick: function(data, element) {
+        window.location = complexityData[data.index][2];
+      },
+      type: "scatter",
+      xs: {
+        "complexity": "complexity_x",
+      },
+    },
+    grid: {
+      focus: {
+        show: true,
+        y: true,
+      },
+      x: {
+        show: true,
+      },
+      y: {
+        show: true,
+      },
+    },
+    legend: {
+      show: false,
+    },
+    tooltip: {
+      contents: function (data) {
+        const coverage = Math.round(data[0].x);
+        const complexity = data[0].value;
+        const targetName = complexityData[data[0].index][3];
+        const crap = complexityData[data[0].index][4];
+        return `<table class="bb-tooltip"><tbody>
+            <tr><th colspan="2">${targetName}</th></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Coverage</td><td class="name">${coverage}%</td></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Complexity</td><td class="value">${complexity}</td></tr>
+            <tr class="bb-tooltip-name-complexity"><td>Crap</td><td class="value">${crap}</td></tr>
+          </tbody></table>`;
+      },
+      grouped: false,
+    },
+  });
+  const classComplexityData = JSON.parse(document.getElementById('complexity_class').textContent);
+  bb.generate(
+    scatterConfig("class", classComplexityData)
+  );
+  const methodComplexityData = JSON.parse(document.getElementById('complexity_method').textContent);
+  bb.generate(
+    scatterConfig("method", methodComplexityData),
+  );
+  </script>
+ </body>
+</html>
